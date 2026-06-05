@@ -1,0 +1,6 @@
+﻿node_modules/
+apps/web/node_modules/
+.vite/
+dist/
+build/
+.env
