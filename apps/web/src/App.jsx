@@ -55,6 +55,7 @@ function App() {
       <ScrollProgressBar />
       <CursorGlow />
       <ScrollToTop />
+      
       <Toaster position="top-right" theme="light" richColors />
       <AnimatedRoutes />
       <StickyCTA />

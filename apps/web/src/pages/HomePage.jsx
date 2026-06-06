@@ -242,6 +242,7 @@ function HomePage() {
           </div>
         </div>
       </section>
+      
 
       {/* Featured Projects */}
       <section className="py-24 bg-muted">
