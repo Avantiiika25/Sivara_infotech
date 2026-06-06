@@ -68,7 +68,7 @@ const industries = [
     image: ind6,
   },
   {
-    title: "Tourism & Hospitality",
+    title: "Plotting",
     image: ind7,
   },
 ];

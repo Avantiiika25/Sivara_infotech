@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 function FeatureCard({
   icon: Icon,
@@ -9,62 +9,173 @@ function FeatureCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      initial={{
+        opacity: 0,
+        y: 60,
+        scale: 0.9,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{
-        duration: 0.6,
+        duration: 0.7,
         delay,
-        ease: 'easeOut',
       }}
       whileHover={{
-        y: -8,
+        y: -12,
         scale: 1.03,
       }}
       className="
-        relative overflow-hidden
-        backdrop-blur-xl
-        bg-white/5
-        border border-cyan-400/20
-        rounded-3xl
-        p-6
         group
+        relative
+        overflow-hidden
+        rounded-3xl
+        backdrop-blur-xl
+        border
+        border-cyan-500/20
+        bg-white/5
+        p-8
         transition-all
         duration-500
         hover:border-cyan-400/50
-        hover:shadow-[0_0_40px_rgba(0,255,255,0.25)]
+        hover:shadow-[0_0_40px_rgba(6,182,212,0.25)]
       "
     >
-      {/* Glow Effect */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" />
+      {/* Animated Glow Background */}
+      <div
+        className="
+          absolute
+          inset-0
+          opacity-0
+          group-hover:opacity-100
+          transition-opacity
+          duration-700
+          bg-gradient-to-br
+          from-cyan-500/10
+          via-transparent
+          to-blue-500/10
+        "
+      />
+
+      {/* Animated Top Border */}
+      <div
+        className="
+          absolute
+          top-0
+          left-[-100%]
+          h-[2px]
+          w-full
+          bg-gradient-to-r
+          from-transparent
+          via-cyan-400
+          to-transparent
+          group-hover:left-full
+          transition-all
+          duration-1000
+        "
+      />
 
       <div className="relative z-10">
-        <div
+        {/* Icon */}
+        <motion.div
+          whileHover={{
+            rotate: 8,
+            scale: 1.1,
+          }}
           className="
-            w-14 h-14
+            relative
+            w-16
+            h-16
             rounded-2xl
-            bg-cyan-500/10
-            border border-cyan-400/20
-            flex items-center justify-center
+            bg-gradient-to-br
+            from-cyan-500/15
+            to-blue-500/15
+            border
+            border-cyan-400/20
+            flex
+            items-center
+            justify-center
             text-cyan-400
-            mb-5
-            group-hover:bg-cyan-500
-            group-hover:text-white
-            group-hover:rotate-6
-            transition-all duration-500
+            mb-6
           "
         >
-          <Icon className="w-7 h-7" />
-        </div>
+          <Icon className="w-8 h-8" />
 
-        <h4 className="text-xl font-bold text-foreground mb-3">
+          {/* Pulse Ring */}
+          <span
+            className="
+              absolute
+              inset-0
+              rounded-2xl
+              border
+              border-cyan-400/20
+              animate-ping
+              opacity-20
+            "
+          />
+        </motion.div>
+
+        {/* Title */}
+        <h3
+          className="
+            text-xl
+            font-bold
+            text-foreground
+            mb-4
+            transition-colors
+            duration-300
+            group-hover:text-cyan-400
+          "
+        >
           {title}
-        </h4>
+        </h3>
 
-        <p className="text-muted-foreground leading-relaxed">
+        {/* Description */}
+        <p
+          className="
+            text-muted-foreground
+            leading-relaxed
+          "
+        >
           {description}
         </p>
+
+        {/* Bottom Glow Line */}
+        <div
+          className="
+            mt-6
+            h-[2px]
+            w-0
+            bg-gradient-to-r
+            from-cyan-400
+            to-blue-500
+            group-hover:w-full
+            transition-all
+            duration-500
+          "
+        />
       </div>
+
+      {/* Floating Cyan Orb */}
+      <div
+        className="
+          absolute
+          -top-10
+          -right-10
+          w-32
+          h-32
+          rounded-full
+          bg-cyan-500/10
+          blur-3xl
+          opacity-0
+          group-hover:opacity-100
+          transition-all
+          duration-700
+        "
+      />
     </motion.div>
   );
 }
