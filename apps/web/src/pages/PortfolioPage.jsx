@@ -6,465 +6,542 @@ import Footer from '@/components/Footer';
 import FilterTabs from '@/components/FilterTabs';
 import ProjectCard from '@/components/ProjectCard';
 
+
+//images
+// Portfolio Images
+
+import w1 from "@/assets/images/w1.png";
+import w2 from "@/assets/images/w2.png";
+import w3 from "@/assets/images/w3.png";
+import w4 from "@/assets/images/w4.png";
+import w5 from "@/assets/images/w5.png";
+import w6 from "@/assets/images/w6.png";
+import w7 from "@/assets/images/w7.png";
+import w8 from "@/assets/images/w8.png";
+import w9 from "@/assets/images/w9.png";
+import w10 from "@/assets/images/w10.png";
+import w11 from "@/assets/images/w11.png";
+import w12 from "@/assets/images/w12.png";
+import w13 from "@/assets/images/w13.png";
+import w14 from "@/assets/images/w14.png";
+import w15 from "@/assets/images/w15.png";
+import w16 from "@/assets/images/w16.png";
+import w17 from "@/assets/images/w17.png";
+import w18 from "@/assets/images/w18.png";
+import w19 from "@/assets/images/w19.png";
+import w20 from "@/assets/images/w20.png";
+
+// Industry Images
+
+import ind3 from "@/assets/images/ind3.png";
+import ind4 from "@/assets/images/ind4.png";
+import ind5 from "@/assets/images/ind5.png";
+import ind6 from "@/assets/images/ind6.png";
+
+
 function PortfolioPage() {
+
   const [activeCategory, setActiveCategory] = useState('all');
 
+  const [showTourModal, setShowTourModal] = useState(false);
+
+  const [selectedTour, setSelectedTour] = useState(null);
+
+  const openTour = (project) => {
+    setSelectedTour(project);
+    setShowTourModal(true);
+  };
+
+  const closeTour = () => {
+    setShowTourModal(false);
+    setSelectedTour(null);
+  };
+
   const categories = [
-  { value: 'all', label: 'All Works' },
-  { value: 'real-estate', label: 'Real Estate' },
-  { value: 'plotting', label: 'Plotting Projects' },
-  { value: 'interior', label: 'Interior Design' },
-  { value: 'expo', label: 'Exhibitions & Expo' },
-  { value: 'education', label: 'Education' },
-  { value: 'healthcare', label: 'Healthcare' },
-  { value: 'government', label: 'Government' },
-  { value: 'mall', label: 'Malls & Retail' }
-];
+    { value: 'all', label: 'All Works' },
+    { value: 'real-estate', label: 'Real Estate' },
+    { value: 'plotting', label: 'Plotting Projects' },
+    { value: 'interior', label: 'Interior Design' },
+    { value: 'expo', label: 'Exhibitions & Expo' },
+    { value: 'education', label: 'Education' },
+    { value: 'healthcare', label: 'Healthcare' },
+    { value: 'government', label: 'Government' },
+    { value: 'mall', label: 'Malls & Retail' }
+  ];
 
-const projects = [
+  const projects = [
 
-  // =========================
-  // REAL ESTATE
-  // =========================
-  {
-    id: 1,
-    title: "Samraat Apna Ghar",
-    category: "real-estate",
-    client: "Samraat Group",
-    description: "Interactive residential property virtual tour.",
-    tourId: "RlO6rgfJS",
-    image: "/portfolio/samraat.jpg"
-  },
-  {
-    id: 2,
-    title: "Riddhi Exotica",
-    category: "real-estate",
-    client: "Riddhi Group",
-    description: "Luxury residential project walkthrough.",
-    tourId: "DA7EYiOJE",
-    image: "/portfolio/riddhi.jpg"
-  },
+    {
+      id: 1,
+      title: "Samraat Apna Ghar",
+      category: "real-estate",
+      client: "Samraat Group",
+      description: "Interactive residential property virtual tour.",
+      image: w1,
+      tourUrl: "https://app.cloudpano.com/tours/RlO6rgfJS/"
+    },
 
-  // =========================
-  // PLOTTING PROJECTS
-  // =========================
-  {
-    id: 3,
-    title: "ABH Industrial Plots Phase 2",
-    category: "plotting",
-    client: "ABH Group",
-    description: "Industrial plotting virtual tour.",
-    tourId: "Sem8kmZIp",
-    image: "/portfolio/abh.jpg"
-  },
+    {
+      id: 2,
+      title: "Riddhi Exotica",
+      category: "real-estate",
+      client: "Riddhi Group",
+      description: "Luxury residential project walkthrough.",
+      image: w2,
+      tourUrl: "https://app.cloudpano.com/tours/DA7EYiOJE/"
+    },
 
-  {
-    id: 4,
-    title: "Urban Sytes Nandur",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Premium NA plotting project.",
-    tourId: "ieUqNz0zd",
-    image: "/portfolio/urban-nandur.jpg"
-  },
+    {
+      id: 3,
+      title: "ABH Industrial Plots Phase 2",
+      category: "plotting",
+      client: "ABH Group",
+      description: "Industrial plotting virtual tour.",
+      image: w3,
+      tourUrl: "https://app.cloudpano.com/tours/-hGPxaR2U/"
+    },
 
-  {
-    id: 5,
-    title: "Urban Sytes Chandsi",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Virtual tour for plotting development.",
-    tourId: "IQP0V54U3",
-    image: "/portfolio/chandsi.jpg"
-  },
+    {
+      id: 4,
+      title: "URBAN SYTES GROUP PLOTS",
+      category: "plotting",
+      client: "Urban Sytes",
+      description: "Premium NA plotting project.",
+      image: w4,
+      tourUrl: "https://app.cloudpano.com/tours/fr6K6w0y1/"
+    },
 
-  {
-    id: 6,
-    title: "Urban Sytes Mhasrul",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Plot showcase near Surti Foods.",
-    tourId: "RihXkAYDz",
-    image: "/portfolio/mhasrul.jpg"
-  },
+    {
+      id: 13,
+      title: "Growth Euphoria Riverside",
+      category: "plotting",
+      client: "Growth Euphoria",
+      description: "Premium riverside plotting.",
+      image: w5,
+      tourUrl: "https://app.cloudpano.com/tours/YK7DG8-XF/"
+    },
 
-  {
-    id: 7,
-    title: "Urban Sytes Warvandi Road",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Premium plotting development.",
-    tourId: "QpGU9YXK-",
-    image: "/portfolio/warvandi.jpg"
-  },
+    {
+      id: 14,
+      title: "Growth Euphoria Lake View",
+      category: "plotting",
+      client: "Growth Euphoria",
+      description: "Lake view plotting project.",
+      image: w6,
+      tourUrl: "https://app.cloudpano.com/tours/YK7DG8-XF/"
+    },
 
-  {
-    id: 8,
-    title: "Urban Sytes Vadner",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "360° plot experience.",
-    tourId: "8y0r3ijfw",
-    image: "/portfolio/vadner.jpg"
-  },
+    {
+      id: 15,
+      title: "Trinity Plots",
+      category: "plotting",
+      client: "Trinity",
+      description: "Premium plotting project.",
+      image: w7,
+      tourUrl: "https://app.cloudpano.com/tours/RLpY4XWm1/"
+    },
 
-  {
-    id: 9,
-    title: "Urban Sytes Mane Nagar",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Interactive plotting project.",
-    tourId: "Uvc1yYSdn",
-    image: "/portfolio/manenagar.jpg"
-  },
+    {
+      id: 16,
+      title: "Nature Village",
+      category: "plotting",
+      client: "Nature Village",
+      description: "Nature inspired plotting development.",
+      image: w20,
+      tourUrl: "https://app.cloudpano.com/tours/EqmVLBIkIWvD/"
+    },
 
-  {
-    id: 10,
-    title: "Urban Sytes Pathardi",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Pathardi plotting showcase.",
-    tourId: "tDdH0Lfs4",
-    image: "/portfolio/pathardi.jpg"
-  },
+    {
+      id: 17,
+      title: "Aura Interior",
+      category: "interior",
+      client: "Aura Interior",
+      description: "Luxury interior virtual walkthrough.",
+      image: w8,
+      tourUrl: "https://app.cloudpano.com/tours/1ZSdkI9lP/"
+    },
 
-  {
-    id: 11,
-    title: "Urban Sytes Chamer Leni",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "NA plotting project tour.",
-    tourId: "fr6K6w0y1",
-    image: "/portfolio/chamerleni.jpg"
-  },
+    {
+      id: 18,
+      title: "CREDAI 2025",
+      category: "expo",
+      client: "CREDAI",
+      description: "Property exhibition virtual tour.",
+      image: ind6,
+      tourUrl: "https://app.cloudpano.com/tours/9h3FCyAmi/"
+    },
 
-  {
-    id: 12,
-    title: "Urban Sytes Gangapur",
-    category: "plotting",
-    client: "Urban Sytes",
-    description: "Interactive plotting solution.",
-    tourId: "OpqpRAGkr",
-    image: "/portfolio/gangapur.jpg"
-  },
+    {
+      id: 19,
+      title: "MAHA TECH",
+      category: "expo",
+      client: "MAHA TECH",
+      description: "Technology expo showcase.",
+      image: w9,
+      tourUrl: "https://app.cloudpano.com/tours/8-H3Ahf06/"
+    },
 
-  {
-    id: 13,
-    title: "Growth Euphoria Riverside",
-    category: "plotting",
-    client: "Growth Euphoria",
-    description: "Premium riverside plotting.",
-    tourId: "YK7DG8-XF",
-    image: "/portfolio/riverside.jpg"
-  },
+    {
+      id: 20,
+      title: "IIID Exhibition",
+      category: "expo",
+      client: "IIID",
+      description: "Interior design exhibition.",
+      image: w10,
+      tourUrl: "https://app.cloudpano.com/tours/Het-5DGip/"
+    },
 
-  {
-    id: 14,
-    title: "Growth Euphoria Lake View",
-    category: "plotting",
-    client: "Growth Euphoria",
-    description: "Lake view plotting project.",
-    tourId: "YK7DG8-XF",
-    image: "/portfolio/lakeview.jpg"
-  },
+    {
+      id: 21,
+      title: "NATCO Expo",
+      category: "expo",
+      client: "NATCO",
+      description: "Industrial exhibition tour.",
+      image: w11,
+      tourUrl: "https://app.cloudpano.com/tours/W8pDkaKNQ/"
+    },
 
-  {
-    id: 15,
-    title: "Trinity Plots",
-    category: "plotting",
-    client: "Trinity",
-    description: "Premium plotting project.",
-    tourId: "RLpY4XWm1",
-    image: "/portfolio/trinity.jpg"
-  },
+    {
+      id: 22,
+      title: "MOACON",
+      category: "expo",
+      client: "MOACON",
+      description: "Conference and expo experience.",
+      image: w12,
+      tourUrl: "https://app.cloudpano.com/tours/_8-1bCqih/"
+    },
 
-  {
-    id: 16,
-    title: "Nature Village",
-    category: "plotting",
-    client: "Nature Village",
-    description: "Nature inspired plotting development.",
-    tourId: "EqmVLBIkIWvD",
-    image: "/portfolio/naturevillage.jpg"
-  },
+    {
+      id: 23,
+      title: "Maharashtra International Trade Expo 2025",
+      category: "expo",
+      client: "MITE",
+      description: "International trade exhibition.",
+      image: w13,
+      tourUrl: "https://app.cloudpano.com/tours/xS-1IXSCf/"
+    },
 
-  // =========================
-  // INTERIOR
-  // =========================
+    {
+      id: 24,
+      title: "CREDAI Shelter Expo 2024",
+      category: "expo",
+      client: "CREDAI Nashik",
+      description: "Property expo walkthrough.",
+      image: ind6,
+      tourUrl: "https://app.cloudpano.com/tours/9h3FCyAmi/"
+    },
 
-  {
-    id: 17,
-    title: "Aura Interior",
-    category: "interior",
-    client: "Aura Interior",
-    description: "Luxury interior virtual walkthrough.",
-    tourId: "1ZSdkI9lP",
-    image: "/portfolio/aura-interior.jpg"
-  },
+    {
+      id: 25,
+      title: "Sapkal Knowledge Hub",
+      category: "education",
+      client: "Sapkal Knowledge Hub",
+      description: "Educational campus virtual tour.",
+      image: w15,
+      tourUrl: "https://app.cloudpano.com/tours/dP-q0e1mgmOn/"
+    },
 
-  // =========================
-  // EXPO
-  // =========================
+    {
+      id: 26,
+      title: "Skin Access Clinic",
+      category: "healthcare",
+      client: "Skin Access",
+      description: "Healthcare facility virtual tour.",
+      image: ind3,
+      tourUrl: "https://app.cloudpano.com/tours/bXsaoFHv9/"
+    },
 
-  {
-    id: 18,
-    title: "CREDAI 2025",
-    category: "expo",
-    client: "CREDAI",
-    description: "Property exhibition virtual tour.",
-    tourId: "9h3FCyAmi",
-    image: "/portfolio/credai2025.jpg"
-  },
+    {
+      id: 27,
+      title: "THS Clinic",
+      category: "healthcare",
+      client: "THS Clinic",
+      description: "Clinic interior virtual walkthrough.",
+      image: w16,
+      tourUrl: "https://app.cloudpano.com/tours/-cA1aT1cF/"
+    },
 
-  {
-    id: 19,
-    title: "MAHA TECH",
-    category: "expo",
-    client: "MAHA TECH",
-    description: "Technology expo showcase.",
-    tourId: "8-H3Ahf06",
-    image: "/portfolio/mahatech.jpg"
-  },
+    {
+      id: 28,
+      title: "Nashik Ganga Ghat",
+      category: "government",
+      client: "Government Project",
+      description: "Tourism and heritage showcase.",
+      image: ind4,
+      tourUrl: "https://app.cloudpano.com/tours/XSmWGW3e6/"
+    },
 
-  {
-    id: 20,
-    title: "IIID Exhibition",
-    category: "expo",
-    client: "IIID",
-    description: "Interior design exhibition.",
-    tourId: "Het-5DGip",
-    image: "/portfolio/iiid.jpg"
-  },
+    {
+      id: 29,
+      title: "Trimbakeshwar",
+      category: "government",
+      client: "Government Project",
+      description: "Religious tourism virtual tour.",
+      image: w17,
+      tourUrl: "https://app.cloudpano.com/tours/eeGGt6LeW/"
+    },
 
-  {
-    id: 21,
-    title: "NATCO Expo",
-    category: "expo",
-    client: "NATCO",
-    description: "Industrial exhibition tour.",
-    tourId: "W8pDkaKNQ",
-    image: "/portfolio/natco.jpg"
-  },
+    {
+      id: 30,
+      title: "Ranji Match Golf Club",
+      category: "government",
+      client: "Sports Authority",
+      description: "Sports event virtual coverage.",
+      image: w18,
+      tourUrl: "https://app.cloudpano.com/tours/dEETujGAt/"
+    },
 
-  {
-    id: 22,
-    title: "MOACON",
-    category: "expo",
-    client: "MOACON",
-    description: "Conference and expo experience.",
-    tourId: "_8-1bCqih",
-    image: "/portfolio/moacon.jpg"
-  },
+    {
+      id: 31,
+      title: "City Center Mall",
+      category: "mall",
+      client: "City Center Mall",
+      description: "Retail destination virtual tour.",
+      image: w19,
+      tourUrl: "https://app.cloudpano.com/tours/m6-g82UFt/"
+    },
 
-  {
-    id: 23,
-    title: "Maharashtra International Trade Expo 2025",
-    category: "expo",
-    client: "MITE",
-    description: "International trade exhibition.",
-    tourId: "xS-1IXSCf",
-    image: "/portfolio/mite.jpg"
-  },
+    {
+      id: 32,
+      title: "Jewellery Showroom",
+      category: "mall",
+      client: "Jewellery Store",
+      description: "Luxury jewellery store walkthrough.",
+      image: ind5,
+      tourUrl: "https://app.cloudpano.com/tours/cpdUSOLWp/"
+    }
 
-  {
-    id: 24,
-    title: "CREDAI Shelter Expo 2024",
-    category: "expo",
-    client: "CREDAI Nashik",
-    description: "Property expo walkthrough.",
-    tourId: "bHHZ--8mA",
-    image: "/portfolio/shelterexpo.jpg"
-  },
-
-  // =========================
-  // EDUCATION
-  // =========================
-
-  {
-    id: 25,
-    title: "Sapkal Knowledge Hub",
-    category: "education",
-    client: "Sapkal Knowledge Hub",
-    description: "Educational campus virtual tour.",
-    tourId: "8m_RTf6lhI7d",
-    image: "/portfolio/sapkal.jpg"
-  },
-
-  // =========================
-  // HEALTHCARE
-  // =========================
-
-  {
-    id: 26,
-    title: "Skin Access Clinic",
-    category: "healthcare",
-    client: "Skin Access",
-    description: "Healthcare facility virtual tour.",
-    tourId: "bXsaoFHv9",
-    image: "/portfolio/skinaccess.jpg"
-  },
-
-  {
-    id: 27,
-    title: "THS Clinic",
-    category: "healthcare",
-    client: "THS Clinic",
-    description: "Clinic interior virtual walkthrough.",
-    tourId: "-cA1aT1cF",
-    image: "/portfolio/ths.jpg"
-  },
-
-  // =========================
-  // GOVERNMENT
-  // =========================
-
-  {
-    id: 28,
-    title: "Nashik Ganga Ghat",
-    category: "government",
-    client: "Government Project",
-    description: "Tourism and heritage showcase.",
-    tourId: "9pcg5drfQ",
-    image: "/portfolio/gangaghat.jpg"
-  },
-
-  {
-    id: 29,
-    title: "Trimbakeshwar",
-    category: "government",
-    client: "Government Project",
-    description: "Religious tourism virtual tour.",
-    tourId: "U51vppK5c",
-    image: "/portfolio/trimbak.jpg"
-  },
-
-  {
-    id: 30,
-    title: "Ranji Match Golf Club",
-    category: "government",
-    client: "Sports Authority",
-    description: "Sports event virtual coverage.",
-    tourId: "dEETujGAt",
-    image: "/portfolio/ranji.jpg"
-  },
-
-  // =========================
-  // MALL & RETAIL
-  // =========================
-
-  {
-    id: 31,
-    title: "City Center Mall",
-    category: "mall",
-    client: "City Center Mall",
-    description: "Retail destination virtual tour.",
-    tourId: "m6-g82UFt",
-    image: "/portfolio/citycenter.jpg"
-  },
-
-  {
-    id: 32,
-    title: "Jewellery Showroom",
-    category: "mall",
-    client: "Jewellery Store",
-    description: "Luxury jewellery store walkthrough.",
-    tourId: "cpdUSOLWp",
-    image: "/portfolio/jewellery.jpg"
-  }
-
-];
-const filteredProjects =
-  activeCategory === 'all'
-    ? projects
-    : projects.filter(
-        (project) => project.category === activeCategory
+  ];
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter(
+        (project) =>
+          project.category === activeCategory
       );
+      
 
-return (
-  <>
-    <Helmet>
-      <title>Portfolio | Sivaraa Infotech</title>
-      <meta
-        name="description"
-        content="Explore our 360° Virtual Tours, Plotting Projects, Real Estate Showcases, Government Projects, Healthcare, Education, Expo Events and more."
-      />
-    </Helmet>
+  return (
+    <>
+      <Helmet>
+        <title>Portfolio | Sivaraa Infotech</title>
 
-    <Header />
+        <meta
+          name="description"
+          content="Explore immersive virtual tours, plotting projects, real estate showcases, government projects, healthcare, education and expo experiences."
+        />
+      </Helmet>
 
-    {/* Hero Section */}
-    <section className="relative pt-40 pb-24 overflow-hidden bg-gradient-to-br from-cyan-50 via-white to-blue-50 border-b border-cyan-100">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(6,182,212,0.08),transparent_40%)]" />
+      <Header />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span className="inline-flex items-center px-5 py-2 rounded-full bg-cyan-100 text-cyan-700 font-semibold text-sm mb-6">
-          360° Virtual Tour Portfolio
-        </span>
+      {/* HERO */}
 
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">
-          Our Portfolio
-        </h1>
+      <section className="relative overflow-hidden pt-36 pb-24 bg-gradient-to-br from-black via-slate-950 to-cyan-950">
 
-        <p className="max-w-3xl mx-auto text-lg md:text-xl text-slate-600 leading-relaxed">
-          Explore immersive virtual experiences created for Real Estate,
-          Plotting Projects, Government Initiatives, Healthcare, Education,
-          Retail Spaces, Exhibitions and more.
-        </p>
-      </div>
-    </section>
+        <div className="absolute inset-0 bg-black/40" />
 
-    {/* Portfolio Section */}
-    <section className="py-20 bg-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-cyan-500/10 blur-[120px]" />
 
-        {/* Filter Tabs */}
-        <div className="mb-14">
-          <FilterTabs
-            categories={categories}
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-          />
-        </div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px]" />
 
-        {/* Results Count */}
-        <div className="mb-10 text-center">
-          <p className="text-slate-500 font-medium">
-            Showing{" "}
-            <span className="text-cyan-600 font-bold">
-              {filteredProjects.length}
-            </span>{" "}
-            Projects
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+
+          <span className="inline-flex items-center px-6 py-2 rounded-full border border-cyan-500/30 text-cyan-400 text-sm uppercase tracking-widest">
+            360° Virtual Tour Portfolio
+          </span>
+
+          <h1 className="mt-8 text-5xl md:text-7xl font-black text-white">
+            Explore Our Projects
+          </h1>
+
+          <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-300">
+            Discover immersive virtual tours created for Real Estate,
+            Plotting Projects, Government Initiatives, Education,
+            Healthcare, Retail Spaces and Exhibitions.
           </p>
+
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              {...project}
-              delay={index * 0.05}
+      </section>
+
+      {/* PORTFOLIO */}
+
+      <section className="relative py-16 bg-slate-950 min-h-screen">
+
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* FILTERS */}
+
+          <div className="mb-12">
+            <FilterTabs
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryChange={setActiveCategory}
             />
-          ))}
+          </div>
+
+          {/* COUNT */}
+
+          <div className="mb-10 text-center">
+
+            <p className="text-slate-400">
+
+              Showing
+
+              <span className="mx-2 text-cyan-400 font-bold">
+                {filteredProjects.length}
+              </span>
+
+              Projects
+
+            </p>
+
+          </div>
+
+          {/* GRID */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            {filteredProjects.map((project, index) => (
+
+              <div
+                key={project.id}
+                className="
+                rounded-3xl
+                overflow-hidden
+                bg-slate-900
+                border
+                border-cyan-500/10
+                hover:border-cyan-400/40
+                transition-all
+                duration-500
+                hover:-translate-y-2
+              "
+              >
+
+                <ProjectCard
+  {...project}
+  delay={index * 0.05}
+  onViewTour={() => openTour(project)}
+/>
+
+                <div className="h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                  <p className="text-gray-300 text-sm leading-relaxed font-medium">
+                    {project.description}
+                  </p>
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          {/* EMPTY */}
+
+          {filteredProjects.length === 0 && (
+
+            <div className="text-center py-24">
+
+              <h3 className="text-3xl font-bold text-white mb-4">
+                No Projects Found
+              </h3>
+
+              <p className="text-slate-400">
+                Projects for this category will appear here.
+              </p>
+
+            </div>
+
+          )}
+
         </div>
 
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-24">
-            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-              No Projects Found
-            </h3>
-            <p className="text-slate-500">
-              Projects for this category will appear here.
-            </p>
-          </div>
-        )}
-      </div>
-    </section>
+      </section>
 
-    <Footer />
-  </>
-);
+      {/* TOUR MODAL */}
+
+      {showTourModal && selectedTour && (
+
+        <div
+          className="
+          fixed
+          inset-0
+          z-[9999]
+          bg-black/90
+          backdrop-blur-md
+          flex
+          items-center
+          justify-center
+          p-4
+        "
+        >
+
+          <div
+            className="
+            relative
+            w-full
+            max-w-7xl
+            h-[92vh]
+            bg-slate-950
+            rounded-3xl
+            overflow-hidden
+            border
+            border-cyan-500/20
+          "
+          >
+
+            <button
+              onClick={closeTour}
+              className="
+              absolute
+              top-5
+              right-5
+              z-50
+              w-12
+              h-12
+              rounded-full
+              bg-red-500
+              text-white
+              text-xl
+              font-bold
+            "
+            >
+              ×
+            </button>
+
+            <div className="h-full flex flex-col">
+
+              <div className="p-6 border-b border-slate-800">
+
+                <h2 className="text-3xl font-bold text-white mb-2">
+                  {selectedTour.title}
+                </h2>
+
+                <p className="text-cyan-400">
+                  {selectedTour.client}
+                </p>
+
+              </div>
+
+              <iframe
+                src={selectedTour.tourUrl}
+                title={selectedTour.title}
+                className="w-full flex-1"
+                allowFullScreen
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
+      <Footer />
+    </>
+  );
 }
 
 export default PortfolioPage;
