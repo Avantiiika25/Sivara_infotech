@@ -461,54 +461,142 @@ function PortfolioPage() {
 
       {/* TOUR MODAL */}
 
-      {showTourModal && selectedTour && (
+{showTourModal && selectedTour && (
 
-        <div
-          className="
-          fixed
-          inset-0
-          z-[9999]
-          bg-black/90
+  <div
+    className="
+      fixed
+      inset-0
+      z-[9999]
+      bg-black/80
+      backdrop-blur-xl
+      flex
+      items-center
+      justify-center
+      p-4
+      animate-in
+      fade-in
+      duration-300
+    "
+  >
+
+    <div
+      className="
+        relative
+        w-full
+        max-w-7xl
+        h-[92vh]
+        rounded-[32px]
+        overflow-hidden
+        border
+        border-cyan-400/20
+        bg-gradient-to-br
+        from-slate-950
+        via-slate-900
+        to-cyan-950
+        shadow-[0_0_80px_rgba(34,211,238,0.15)]
+        animate-in
+        zoom-in-95
+        duration-300
+      "
+    >
+
+      {/* Glow Effects */}
+
+      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-500/20 blur-[120px] rounded-full" />
+
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/20 blur-[120px] rounded-full" />
+
+      {/* Close Button */}
+
+      <button
+        onClick={closeTour}
+        className="
+          absolute
+          top-4
+          right-4
+          z-50
+          w-10
+          h-10
+          rounded-full
+          bg-white/10
           backdrop-blur-md
+          border
+          border-white/20
+          text-white
+          text-lg
+          hover:bg-red-500
+          hover:scale-110
+          transition-all
+          duration-300
           flex
           items-center
           justify-center
-          p-4
         "
+      >
+        ✕
+      </button>
+
+      <div className="h-full flex flex-col">
+
+        {/* Header */}
+
+        <div
+          className="
+            px-6
+            py-4
+            border-b
+            border-cyan-500/10
+            bg-white/5
+            backdrop-blur-md
+          "
         >
+
+          <h2 className="text-xl md:text-2xl font-bold text-white">
+            {selectedTour.title}
+          </h2>
+
+          <p className="text-cyan-400 text-sm mt-1">
+            {selectedTour.client}
+          </p>
+
+        </div>
+
+        {/* IFRAME */}
+
+        <div className="flex-1 p-4">
 
           <div
             className="
-            relative
-            w-full
-            max-w-7xl
-            h-[92vh]
-            bg-slate-950
-            rounded-3xl
-            overflow-hidden
-            border
-            border-cyan-500/20
-          "
+              w-full
+              h-full
+              rounded-2xl
+              overflow-hidden
+              border
+              border-cyan-500/20
+              shadow-[0_0_50px_rgba(34,211,238,0.15)]
+              bg-black
+            "
           >
 
-            <button
-              onClick={closeTour}
-              className="
-              absolute
-              top-5
-              right-5
-              z-50
-              w-12
-              h-12
-              rounded-full
-              bg-red-500
-              text-white
-              text-xl
-              font-bold
-            "
-            >
-              ×
-            </button>
+            <iframe
+              src={selectedTour.tourUrl}
+              title={selectedTour.title}
+              className="w-full h-full"
+              allowFullScreen
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+)}
 
             <div className="h-full flex flex-col">
 
