@@ -462,50 +462,31 @@ function PortfolioPage() {
       {/* TOUR MODAL */}
 
 {showTourModal && selectedTour && (
-
   <div
     className="
-      fixed
-      inset-0
-      z-[9999]
-      bg-black/80
-      backdrop-blur-xl
-      flex
-      items-center
-      justify-center
+      fixed inset-0 z-[9999]
+      bg-black/80 backdrop-blur-md
+      flex items-center justify-center
       p-4
-      animate-in
-      fade-in
-      duration-300
     "
   >
-
     <div
       className="
         relative
-        w-full
-        max-w-7xl
+        w-full max-w-7xl
         h-[92vh]
-        rounded-[32px]
+        rounded-3xl
         overflow-hidden
-        border
-        border-cyan-400/20
-        bg-gradient-to-br
-        from-slate-950
-        via-slate-900
-        to-cyan-950
-        shadow-[0_0_80px_rgba(34,211,238,0.15)]
-        animate-in
-        zoom-in-95
-        duration-300
+        border border-cyan-500/20
+        bg-slate-950
+        shadow-2xl
       "
     >
-
       {/* Glow Effects */}
 
-      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-500/20 blur-[120px] rounded-full" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500/10 blur-[100px]" />
 
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/20 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px]" />
 
       {/* Close Button */}
 
@@ -519,23 +500,49 @@ function PortfolioPage() {
           w-10
           h-10
           rounded-full
-          bg-white/10
-          backdrop-blur-md
-          border
-          border-white/20
+          bg-cyan-500
           text-white
-          text-lg
-          hover:bg-red-500
+          font-bold
+          hover:bg-cyan-400
           hover:scale-110
           transition-all
           duration-300
-          flex
-          items-center
-          justify-center
         "
       >
         ✕
       </button>
+
+      <div className="h-full flex flex-col">
+
+        {/* Header */}
+
+        <div className="p-5 border-b border-slate-800 bg-slate-900/70 backdrop-blur-sm">
+          <h2 className="text-2xl font-bold text-white">
+            {selectedTour.title}
+          </h2>
+
+          <p className="text-cyan-400">
+            {selectedTour.client}
+          </p>
+        </div>
+
+        {/* Tour Viewer */}
+
+        <div className="flex-1 p-4">
+          <div className="w-full h-full rounded-2xl overflow-hidden border border-cyan-500/20">
+            <iframe
+              src={selectedTour.tourUrl}
+              title={selectedTour.title}
+              className="w-full h-full"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+)}
 
       <div className="h-full flex flex-col">
 
