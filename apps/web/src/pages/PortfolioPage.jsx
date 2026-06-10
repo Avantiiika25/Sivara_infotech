@@ -556,34 +556,11 @@ function PortfolioPage() {
   </div>
 
 )}
-          <div className="h-full flex flex-col">
+          
 
-              <div className="p-6 border-b border-slate-800">
+          
 
-                <h2 className="text-3xl font-bold text-white mb-2">
-                  {selectedTour.title}
-                </h2>
-
-                <p className="text-cyan-400">
-                  {selectedTour.client}
-                </p>
-
-              </div>
-
-              <iframe
-                src={selectedTour.tourUrl}
-                title={selectedTour.title}
-                className="w-full flex-1"
-                allowFullScreen
-              />
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
+       
 
       <Footer />
     </>
