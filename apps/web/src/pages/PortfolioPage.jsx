@@ -462,31 +462,60 @@ function PortfolioPage() {
       {/* TOUR MODAL */}
 
 {showTourModal && selectedTour && (
+
   <div
     className="
       fixed inset-0 z-[9999]
-      bg-black/80 backdrop-blur-md
+      bg-black/70 backdrop-blur-md
       flex items-center justify-center
-      p-4
+      p-3
     "
   >
+
     <div
       className="
         relative
-        w-full max-w-7xl
-        h-[92vh]
+        w-full
+        max-w-[1700px]
+        h-[95vh]
         rounded-3xl
         overflow-hidden
-        border border-cyan-500/20
-        bg-slate-950
+        bg-white
         shadow-2xl
       "
     >
-      {/* Glow Effects */}
 
-      <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500/10 blur-[100px]" />
+      {/* Small Floating Header */}
 
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px]" />
+      <div
+        className="
+          absolute
+          top-4
+          left-4
+          z-40
+          flex
+          items-center
+          gap-3
+          px-4
+          py-2
+          rounded-full
+          bg-white/90
+          backdrop-blur-md
+          shadow-lg
+        "
+      >
+
+        <div>
+          <h2 className="text-sm font-semibold text-slate-900 leading-none">
+            {selectedTour.title}
+          </h2>
+
+          <p className="text-xs text-slate-500 mt-1">
+            {selectedTour.client}
+          </p>
+        </div>
+
+      </div>
 
       {/* Close Button */}
 
@@ -500,11 +529,12 @@ function PortfolioPage() {
           w-10
           h-10
           rounded-full
-          bg-cyan-500
-          text-white
-          font-bold
-          hover:bg-cyan-400
+          bg-white
+          text-slate-900
+          shadow-lg
           hover:scale-110
+          hover:bg-red-500
+          hover:text-white
           transition-all
           duration-300
         "
@@ -512,100 +542,21 @@ function PortfolioPage() {
         ✕
       </button>
 
-      <div className="h-full flex flex-col">
+      {/* Fullscreen Iframe */}
 
-        {/* Header */}
-
-        <div className="p-5 border-b border-slate-800 bg-slate-900/70 backdrop-blur-sm">
-          <h2 className="text-2xl font-bold text-white">
-            {selectedTour.title}
-          </h2>
-
-          <p className="text-cyan-400">
-            {selectedTour.client}
-          </p>
-        </div>
-
-        {/* Tour Viewer */}
-
-        <div className="flex-1 p-4">
-          <div className="w-full h-full rounded-2xl overflow-hidden border border-cyan-500/20">
-            <iframe
-              src={selectedTour.tourUrl}
-              title={selectedTour.title}
-              className="w-full h-full"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-)}
-
-      <div className="h-full flex flex-col">
-
-        {/* Header */}
-
-        <div
-          className="
-            px-6
-            py-4
-            border-b
-            border-cyan-500/10
-            bg-white/5
-            backdrop-blur-md
-          "
-        >
-
-          <h2 className="text-xl md:text-2xl font-bold text-white">
-            {selectedTour.title}
-          </h2>
-
-          <p className="text-cyan-400 text-sm mt-1">
-            {selectedTour.client}
-          </p>
-
-        </div>
-
-        {/* IFRAME */}
-
-        <div className="flex-1 p-4">
-
-          <div
-            className="
-              w-full
-              h-full
-              rounded-2xl
-              overflow-hidden
-              border
-              border-cyan-500/20
-              shadow-[0_0_50px_rgba(34,211,238,0.15)]
-              bg-black
-            "
-          >
-
-            <iframe
-              src={selectedTour.tourUrl}
-              title={selectedTour.title}
-              className="w-full h-full"
-              allowFullScreen
-            />
-
-          </div>
-
-        </div>
-
-      </div>
+      <iframe
+        src={selectedTour.tourUrl}
+        title={selectedTour.title}
+        className="w-full h-full"
+        allowFullScreen
+      />
 
     </div>
 
   </div>
 
 )}
-
-            <div className="h-full flex flex-col">
+          <div className="h-full flex flex-col">
 
               <div className="p-6 border-b border-slate-800">
 
