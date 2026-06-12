@@ -458,521 +458,879 @@ function CRMSoftwarePage() {
 
             {/* BENEFITS SECTION */}
 
-      <section className="py-24 bg-slate-950 border-t border-cyan-500/10">
-
-        <div className="max-w-7xl mx-auto px-4">
-
-          <div className="text-center mb-16">
-
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-sm font-semibold mb-5">
-              ⭐ Why Developers Choose Us
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Key Benefits
-            </h2>
-
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Powerful tools designed to simplify operations,
-              increase sales efficiency and provide complete
-              project visibility.
-            </p>
-
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {[
-              {
-                icon: Globe,
-                title: "Sell Plots Online 24/7"
-              },
-              {
-                icon: ShieldCheck,
-                title: "Increase Transparency"
-              },
-              {
-                icon: CheckCircle2,
-                title: "Eliminate Manual Errors"
-              },
-              {
-                icon: LayoutDashboard,
-                title: "Monitor Team Performance"
-              },
-              {
-                icon: MonitorSmartphone,
-                title: "Desktop, Tablet & Mobile"
-              },
-              {
-                icon: BriefcaseBusiness,
-                title: "Multi Project Management"
-              },
-              {
-                icon: BarChart3,
-                title: "Advanced Analytics"
-              },
-              {
-                icon: Users,
-                title: "Better Customer Experience"
-              }
-            ].map((item, index) => {
-
-              const Icon = item.icon;
-
-              return (
-
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="
-                    group
-                    p-6
-                    rounded-3xl
-                    bg-white/5
-                    border
-                    border-cyan-500/10
-                    hover:border-cyan-400/30
-                    backdrop-blur-xl
-                    transition-all
-                    duration-500
-                    hover:-translate-y-2
-                  "
-                >
-
-                  <div
-                    className="
-                      w-14
-                      h-14
-                      rounded-2xl
-                      flex
-                      items-center
-                      justify-center
-                      bg-cyan-500/10
-                      border
-                      border-cyan-500/20
-                      mb-5
-                      group-hover:scale-110
-                      transition-all
-                      duration-300
-                    "
-                  >
-                    <Icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.title}
-                  </h3>
-
-                </motion.div>
-
-              );
-
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* WEBSITE & BRANDING INCLUDED */}
-
-      <section className="py-24 bg-slate-900">
-
-        <div className="max-w-7xl mx-auto px-4">
-
-          <div className="text-center mb-16">
-
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-sm font-semibold mb-5">
-              🌐 Complete Digital Presence
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Website & Branding Included
-            </h2>
-
-            <p className="text-slate-400 max-w-3xl mx-auto">
-              Your fully branded project portal with all tools
-              required to generate leads, manage bookings and
-              showcase availability online.
-            </p>
-
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {[
-              "Project Listings by City / Type / Status",
-              "Plot Availability Map & Booking System",
-              "Loan Calculator",
-              "Gallery, Team, Contact & Careers",
-              "Privacy Policy, FAQs & Disclaimer",
-              "Domain + Hosting + Email Setup",
-              "Lead Collection Forms",
-              "SEO Friendly Structure"
-            ].map((item, index) => (
-
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="
-                  p-6
-                  rounded-3xl
-                  bg-slate-950
-                  border
-                  border-cyan-500/10
-                  text-center
-                "
-              >
-
-                <Globe className="w-6 h-6 text-cyan-400 mx-auto mb-4" />
-
-                <p className="text-slate-200 text-sm">
-                  {item}
-                </p>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* SOFTWARE MODULES START IN PART 3 */}
-            {/* SOFTWARE MODULES */}
-
-      <section className="py-24 bg-slate-950 border-t border-cyan-500/10">
-
-        <div className="max-w-7xl mx-auto px-4">
-
-          <div className="text-center mb-16">
-
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-sm font-semibold mb-5">
-              ⚙️ Powerful CRM Modules
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Software Modules Breakdown
-            </h2>
-
-            <p className="text-slate-400 max-w-3xl mx-auto">
-              Every feature required to manage plotting projects,
-              automate sales and streamline customer management
-              from a single platform.
-            </p>
-
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {[
-              {
-                icon: Globe,
-                title: "Plot Inventory & Booking",
-                items: [
-                  "Live layout with booking status",
-                  "Track reservations",
-                  "Online booking engine",
-                  "Interactive plot availability"
-                ]
-              },
-              {
-                icon: LayoutDashboard,
-                title: "Lead Management CRM",
-                items: [
-                  "Lead source tracking",
-                  "Follow-up reminders",
-                  "Sales funnel management",
-                  "Agent-wise lead assignment"
-                ]
-              },
-              {
-                icon: CreditCard,
-                title: "Customer & Payment Tracking",
-                items: [
-                  "KYC & customer records",
-                  "Installment tracking",
-                  "Auto reminders",
-                  "Receipt generation"
-                ]
-              },
-              {
-                icon: Users,
-                title: "Agent Panel & Commission Tracker",
-                items: [
-                  "Agent login access",
-                  "Commission calculator",
-                  "Performance reports",
-                  "Lead ownership tracking"
-                ]
-              },
-              {
-                icon: Building2,
-                title: "Loans & EMI Management",
-                items: [
-                  "Loan approval workflow",
-                  "Bank coordination",
-                  "EMI schedules",
-                  "Payment history"
-                ]
-              },
-              {
-                icon: ShieldCheck,
-                title: "Admin & Employee Dashboard",
-                items: [
-                  "Role-based permissions",
-                  "Staff monitoring",
-                  "Attendance overview",
-                  "Department reporting"
-                ]
-              },
-              {
-                icon: BarChart3,
-                title: "Smart Reporting",
-                items: [
-                  "Real-time sales charts",
-                  "Revenue reports",
-                  "Agent performance",
-                  "Project analytics"
-                ]
-              }
-            ].map((module, index) => {
-
-              const Icon = module.icon;
-
-              return (
-
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="
-                    p-8
-                    rounded-3xl
-                    bg-white/5
-                    border
-                    border-cyan-500/10
-                    hover:border-cyan-400/30
-                    backdrop-blur-xl
-                    transition-all
-                    duration-500
-                    hover:-translate-y-2
-                  "
-                >
-
-                  <div
-                    className="
-                      w-14
-                      h-14
-                      rounded-2xl
-                      bg-cyan-500/10
-                      border
-                      border-cyan-500/20
-                      flex
-                      items-center
-                      justify-center
-                      mb-6
-                    "
-                  >
-                    <Icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-white mb-5">
-                    {module.title}
-                  </h3>
-
-                  <div className="space-y-3">
-
-                    {module.items.map((item, i) => (
-
-                      <div
-                        key={i}
-                        className="flex items-center gap-3"
-                      >
-
-                        <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-
-                        <span className="text-slate-300 text-sm">
-                          {item}
-                        </span>
-
-                      </div>
-
-                    ))}
-
-                  </div>
-
-                </motion.div>
-
-              );
-
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* PRICING */}
-
-      <section className="py-24 bg-slate-900">
-
-        <div className="max-w-7xl mx-auto px-4">
-
-          <div className="text-center mb-16">
-
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Choose Your Plan
-            </h2>
-
-            <p className="text-slate-400">
-              Select the perfect solution for your business
-            </p>
-
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <div className="p-8 rounded-3xl bg-slate-950 border border-cyan-500/10">
-
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Starter
-              </h3>
-
-              <p className="text-cyan-400 text-4xl font-black mb-6">
-                ₹49,999
-              </p>
-
-              <ul className="space-y-3 text-slate-300">
-                <li>• Basic CRM</li>
-                <li>• Lead Management</li>
-                <li>• Booking System</li>
-                <li>• Standard Website</li>
-                <li>• Email Support</li>
-              </ul>
-
-            </div>
-
-            <div className="p-8 rounded-3xl bg-gradient-to-b from-cyan-500/10 to-blue-500/10 border border-cyan-400 relative">
-
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-cyan-400 text-slate-950 text-xs font-bold">
-                MOST POPULAR
-              </div>
-
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Professional
-              </h3>
-
-              <p className="text-cyan-400 text-4xl font-black mb-6">
-                ₹99,999
-              </p>
-
-              <ul className="space-y-3 text-slate-300">
-                <li>• Advanced CRM</li>
-                <li>• Agent Dashboard</li>
-                <li>• Commission Tracking</li>
-                <li>• Premium Website</li>
-                <li>• Priority Support</li>
-              </ul>
-
-            </div>
-
-            <div className="p-8 rounded-3xl bg-slate-950 border border-cyan-500/10">
-
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Enterprise
-              </h3>
-
-              <p className="text-cyan-400 text-4xl font-black mb-6">
-                Custom
-              </p>
-
-              <ul className="space-y-3 text-slate-300">
-                <li>• Unlimited Projects</li>
-                <li>• Full Automation</li>
-                <li>• API Integrations</li>
-                <li>• White Label CRM</li>
-                <li>• Dedicated Support</li>
-              </ul>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* DEMO SECTION */}
-
-      <section className="py-24 bg-slate-950 border-t border-cyan-500/10">
-
-        <div className="max-w-7xl mx-auto px-4">
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-
-            <div>
-
-              <h2 className="text-4xl font-black text-white mb-6">
-                Ready to Get Started?
-              </h2>
-
-              <p className="text-slate-400 mb-8">
-                Book a free demo and see how our Plot Management
-                CRM can automate your sales process.
-              </p>
-
-              <div className="space-y-5">
-
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-cyan-400" />
-                  <span className="text-slate-300">
-                    +91 8412972366
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-cyan-400" />
-                  <span className="text-slate-300">
-                    info@sivaraainfotech.com
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
+<section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-cyan-50/30 to-white">
+
+  {/* Background Glow */}
+
+  <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-200/30 blur-[150px] rounded-full" />
+
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/30 blur-[150px] rounded-full" />
+
+  <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+    {/* Heading */}
+
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="text-center mb-20"
+    >
+
+      <div
+        className="
+          inline-flex
+          items-center
+          gap-2
+          px-6
+          py-3
+          rounded-full
+          bg-cyan-50
+          border
+          border-cyan-200
+          text-cyan-600
+          text-sm
+          font-semibold
+          shadow-sm
+          mb-6
+        "
+      >
+        ⭐ Why Developers Choose Us
+      </div>
+
+      <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-5">
+        Built for Growth
+      </h2>
+
+      <p className="max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+        Everything you need to manage plots, automate sales,
+        track customers and scale your real estate business
+        efficiently from one intelligent platform.
+      </p>
+
+    </motion.div>
+
+    {/* Cards */}
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      {[
+        {
+          icon: Globe,
+          title: "Sell Plots Online 24/7",
+          desc: "Enable customers to view and reserve plots anytime."
+        },
+        {
+          icon: ShieldCheck,
+          title: "Increase Transparency",
+          desc: "Real-time inventory and booking visibility."
+        },
+        {
+          icon: CheckCircle2,
+          title: "Eliminate Manual Errors",
+          desc: "Automated workflows reduce operational mistakes."
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Monitor Team Performance",
+          desc: "Track agent productivity and sales performance."
+        },
+        {
+          icon: MonitorSmartphone,
+          title: "All Device Access",
+          desc: "Works seamlessly on mobile, tablet and desktop."
+        },
+        {
+          icon: BriefcaseBusiness,
+          title: "Manage Multiple Projects",
+          desc: "Control all plotting projects from one dashboard."
+        },
+        {
+          icon: BarChart3,
+          title: "Advanced Analytics",
+          desc: "Make data-driven decisions with smart reports."
+        },
+        {
+          icon: Users,
+          title: "Better Customer Experience",
+          desc: "Provide faster responses and smoother processes."
+        }
+      ].map((item, index) => {
+
+        const Icon = item.icon;
+
+        return (
+
+          <motion.div
+            key={index}
+            initial={{
+              opacity: 0,
+              y: 60,
+              scale: 0.9
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.08
+            }}
+            whileHover={{
+              y: -10,
+              scale: 1.03
+            }}
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-3xl
+              bg-white/80
+              backdrop-blur-xl
+              border
+              border-slate-200
+              p-7
+              shadow-lg
+              hover:shadow-2xl
+              hover:border-cyan-300
+              transition-all
+              duration-500
+            "
+          >
+
+            {/* Hover Glow */}
 
             <div
               className="
-                p-8
-                rounded-3xl
-                bg-white/5
-                border
-                border-cyan-500/10
-                backdrop-blur-xl
+                absolute
+                inset-0
+                bg-gradient-to-br
+                from-cyan-100/0
+                to-cyan-100/40
+                opacity-0
+                group-hover:opacity-100
+                transition-all
+                duration-500
+              "
+            />
+
+            <div className="relative z-10">
+
+              <div
+                className="
+                  w-16
+                  h-16
+                  rounded-2xl
+                  bg-cyan-50
+                  border
+                  border-cyan-200
+                  flex
+                  items-center
+                  justify-center
+                  mb-6
+                  group-hover:bg-cyan-500
+                  transition-all
+                  duration-500
+                "
+              >
+
+                <Icon
+                  className="
+                    w-7
+                    h-7
+                    text-cyan-500
+                    group-hover:text-white
+                    transition-all
+                    duration-500
+                  "
+                />
+
+              </div>
+
+              <h3 className="text-lg font-bold text-slate-900 mb-3">
+                {item.title}
+              </h3>
+
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {item.desc}
+              </p>
+
+            </div>
+
+          </motion.div>
+
+        );
+
+      })}
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* WEBSITE & BRANDING INCLUDED */}
+
+<section className="py-20 bg-gradient-to-b from-white via-cyan-50 to-slate-100 overflow-hidden">
+
+  <div className="max-w-7xl mx-auto px-4">
+
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="text-center mb-14"
+    >
+
+      <div
+        className="
+          inline-flex
+          items-center
+          gap-2
+          px-5
+          py-2
+          rounded-full
+          bg-gradient-to-r
+          from-cyan-500
+          to-blue-500
+          text-white
+          text-sm
+          font-semibold
+          shadow-lg
+          mb-5
+        "
+      >
+        🌐 Complete Digital Presence
+      </div>
+
+      <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+        Website & Branding Included
+      </h2>
+
+      <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        Your fully branded project portal equipped with lead generation,
+        booking management, customer engagement tools and online project
+        showcase capabilities.
+      </p>
+
+    </motion.div>
+
+    <div className="grid lg:grid-cols-2 gap-5">
+
+      {[
+        "Project Listings by City / Type / Status",
+        "Plot Availability Map & Booking System",
+        "Loan Calculator",
+        "Gallery, Team, Contact & Careers",
+        "Privacy Policy, FAQs & Disclaimer",
+        "Domain + Hosting + Email Setup",
+        "Lead Collection Forms",
+        "SEO Friendly Structure"
+      ].map((item, index) => (
+
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.5,
+            delay: index * 0.08
+          }}
+          whileHover={{
+            scale: 1.02,
+            y: -4
+          }}
+          className="
+            group
+            relative
+            overflow-hidden
+            rounded-2xl
+            bg-white
+            border
+            border-cyan-100
+            shadow-md
+            hover:shadow-2xl
+            transition-all
+            duration-500
+          "
+        >
+
+          {/* Hover Glow */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              opacity-0
+              group-hover:opacity-100
+              transition-opacity
+              duration-500
+              bg-gradient-to-r
+              from-cyan-500/5
+              via-white
+              to-blue-500/5
+            "
+          />
+
+          <div className="relative flex items-center gap-4 p-5">
+
+            <div
+              className="
+                w-14
+                h-14
+                rounded-2xl
+                flex
+                items-center
+                justify-center
+                bg-gradient-to-br
+                from-cyan-500
+                to-blue-500
+                shadow-lg
+                group-hover:rotate-6
+                transition-all
+                duration-300
+                flex-shrink-0
               "
             >
-              <DemoRequestForm />
+              <Globe className="w-6 h-6 text-white" />
+            </div>
+
+            <div className="flex-1">
+
+              <h3
+                className="
+                  text-slate-800
+                  font-semibold
+                  leading-relaxed
+                  group-hover:text-cyan-600
+                  transition-colors
+                  duration-300
+                "
+              >
+                {item}
+              </h3>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* SOFTWARE MODULES */}
+
+<section className="py-24 bg-gradient-to-b from-slate-950 via-black to-slate-950 overflow-hidden">
+
+  <div className="max-w-7xl mx-auto px-4">
+
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+
+      <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-semibold mb-5">
+        ⚙️ Powerful CRM Modules
+      </div>
+
+      <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+        Software Modules Breakdown
+      </h2>
+
+      <p className="text-slate-400 max-w-3xl mx-auto">
+        Every feature required to manage plotting projects,
+        automate sales and streamline customer management
+        from a single platform.
+      </p>
+
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      {/* Large Featured Card */}
+
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="lg:col-span-2"
+      >
+
+        <div className="h-full rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600 flex flex-col md:flex-row">
+
+          <div className="p-8 md:w-1/2">
+
+            <Globe className="w-10 h-10 text-white mb-5" />
+
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Plot Inventory & Booking
+            </h3>
+
+            <p className="text-cyan-50 mb-6 text-sm leading-relaxed">
+              Real-time plot availability system with booking,
+              reservation management and interactive project layouts.
+            </p>
+
+            <div className="space-y-3">
+
+              {[
+                "Live Layout Availability",
+                "Online Booking Engine",
+                "Reservation Tracking",
+                "Interactive Plot Maps"
+              ].map((item, i) => (
+
+                <div key={i} className="flex items-center gap-3">
+
+                  <CheckCircle2 className="w-4 h-4 text-white" />
+
+                  <span className="text-white text-sm">
+                    {item}
+                  </span>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+          <div className="hidden md:flex md:w-1/2 items-center justify-center">
+
+            <img
+              src="https://images.unsplash.com/photo-1460317442991-0ec209397118"
+              alt=""
+              className="h-full w-full object-cover"
+            />
+
+          </div>
+
+        </div>
+
+      </motion.div>
+
+      {/* Small Cards */}
+
+      {[
+        {
+          icon: LayoutDashboard,
+          title: "Lead CRM",
+          color: "from-slate-800 to-slate-900"
+        },
+        {
+          icon: CreditCard,
+          title: "Payments",
+          color: "from-cyan-600 to-cyan-700"
+        },
+        {
+          icon: Users,
+          title: "Agent Panel",
+          color: "from-violet-600 to-purple-700"
+        },
+        {
+          icon: Building2,
+          title: "EMI & Loans",
+          color: "from-slate-800 to-slate-900"
+        },
+        {
+          icon: ShieldCheck,
+          title: "Admin Dashboard",
+          color: "from-cyan-600 to-blue-700"
+        },
+        {
+          icon: BarChart3,
+          title: "Smart Reports",
+          color: "from-slate-800 to-slate-900"
+        }
+      ].map((module, index) => {
+
+        const Icon = module.icon;
+
+        return (
+
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08 }}
+            whileHover={{
+              y: -8,
+              scale: 1.02
+            }}
+            className={`
+              rounded-3xl
+              p-6
+              bg-gradient-to-br
+              ${module.color}
+              border
+              border-white/10
+              transition-all
+              duration-500
+            `}
+          >
+
+            <Icon className="w-10 h-10 text-white mb-5" />
+
+            <h3 className="text-white font-bold text-lg mb-3">
+              {module.title}
+            </h3>
+
+            <p className="text-white/80 text-sm">
+              Advanced tools built for modern real estate
+              sales and project management.
+            </p>
+
+          </motion.div>
+
+        );
+
+      })}
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* PRICING */}
+
+<section className="py-16 bg-gradient-to-b from-white to-slate-50">
+
+  <div className="max-w-6xl mx-auto px-4">
+
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-10"
+    >
+
+      <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-sm font-semibold mb-4">
+        🚀 Flexible Solutions
+      </div>
+
+      <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-3">
+        Choose Your Plan
+      </h2>
+
+      <p className="text-slate-600 max-w-2xl mx-auto">
+        Select the right CRM package for your plotting project and business growth.
+      </p>
+
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      {/* STARTER */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        whileHover={{ y: -8 }}
+        className="
+          group
+          bg-white
+          rounded-3xl
+          p-6
+          border
+          border-slate-200
+          shadow-sm
+          hover:shadow-xl
+          hover:border-cyan-300
+          transition-all
+          duration-500
+        "
+      >
+
+        <div className="w-12 h-12 rounded-2xl bg-cyan-50 flex items-center justify-center mb-4">
+          <span className="text-xl">🌱</span>
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-900 mb-4">
+          Starter Plan
+        </h3>
+
+        <ul className="space-y-2 text-sm text-slate-600">
+
+          <li>✓ Basic CRM</li>
+          <li>✓ Lead Management</li>
+          <li>✓ Booking System</li>
+          <li>✓ Standard Website</li>
+          <li>✓ Email Support</li>
+
+        </ul>
+
+      </motion.div>
+
+      {/* PROFESSIONAL */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        whileHover={{ y: -10 }}
+        className="
+          group
+          relative
+          bg-gradient-to-br
+          from-cyan-500
+          via-cyan-400
+          to-blue-500
+          rounded-3xl
+          p-6
+          shadow-2xl
+          overflow-hidden
+        "
+      >
+
+        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white text-cyan-600 text-xs font-bold">
+          POPULAR
+        </div>
+
+        <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-4">
+          <span className="text-xl">🔥</span>
+        </div>
+
+        <h3 className="text-xl font-bold text-white mb-4">
+          Professional Plan
+        </h3>
+
+        <ul className="space-y-2 text-sm text-white/90">
+
+          <li>✓ Advanced CRM</li>
+          <li>✓ Agent Dashboard</li>
+          <li>✓ Commission Tracking</li>
+          <li>✓ Premium Website</li>
+          <li>✓ Priority Support</li>
+
+        </ul>
+
+      </motion.div>
+
+      {/* ENTERPRISE */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        whileHover={{ y: -8 }}
+        className="
+          group
+          bg-white
+          rounded-3xl
+          p-6
+          border
+          border-slate-200
+          shadow-sm
+          hover:shadow-xl
+          hover:border-cyan-300
+          transition-all
+          duration-500
+        "
+      >
+
+        <div className="w-12 h-12 rounded-2xl bg-cyan-50 flex items-center justify-center mb-4">
+          <span className="text-xl">🏢</span>
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-900 mb-4">
+          Enterprise Plan
+        </h3>
+
+        <ul className="space-y-2 text-sm text-slate-600">
+
+          <li>✓ Unlimited Projects</li>
+          <li>✓ Full Automation</li>
+          <li>✓ API Integrations</li>
+          <li>✓ White Label CRM</li>
+          <li>✓ Dedicated Support</li>
+
+        </ul>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</section>
+     {/* DEMO SECTION */}
+
+<section className="py-16 bg-slate-950 relative overflow-hidden">
+
+  {/* Background Glow */}
+
+  <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 blur-[140px] rounded-full" />
+
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 blur-[140px] rounded-full" />
+
+  <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+    <div
+      className="
+        rounded-[36px]
+        overflow-hidden
+        border
+        border-cyan-500/10
+        bg-gradient-to-br
+        from-slate-900
+        via-slate-950
+        to-black
+        shadow-[0_0_80px_rgba(34,211,238,0.08)]
+      "
+    >
+
+      <div className="grid lg:grid-cols-2">
+
+        {/* LEFT CONTENT */}
+
+        <div className="p-8 md:p-12 flex flex-col justify-center">
+
+          <div className="inline-flex w-fit items-center px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-6">
+            🚀 Free Live Demonstration
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-5">
+            Ready To Transform
+            <span className="block text-cyan-400">
+              Your Plot Business?
+            </span>
+          </h2>
+
+          <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+            Schedule a free live demo and discover how our
+            Plot Management CRM helps automate sales,
+            booking management, customer tracking,
+            payment collection and project reporting.
+          </p>
+
+          <div className="space-y-5">
+
+            <div className="flex items-center gap-4">
+
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                <Phone className="w-5 h-5 text-cyan-400" />
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-wider text-slate-500">
+                  Call Us
+                </p>
+
+                <p className="text-white font-semibold">
+                  +91 8412972366
+                </p>
+              </div>
+
+            </div>
+
+            <div className="flex items-center gap-4">
+
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-cyan-400" />
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-wider text-slate-500">
+                  Email Us
+                </p>
+
+                <p className="text-white font-semibold break-all">
+                  contact.primedigitalmedia@gmail.com
+                </p>
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-      </section>
+        {/* RIGHT FORM */}
 
+        <div
+          className="
+            relative
+            min-h-[550px]
+            flex
+            items-center
+            justify-center
+            p-6
+          "
+        >
+
+          {/* Background Image */}
+
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
+          />
+
+          {/* Overlay */}
+
+          <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px]" />
+
+          {/* Form Card */}
+
+          <div
+            className="
+              relative
+              z-10
+              w-full
+              max-w-lg
+              bg-white
+              rounded-3xl
+              p-6 md:p-8
+              shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+            "
+          >
+
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              Request Demo
+            </h3>
+
+            <p className="text-slate-500 text-sm mb-6">
+              Fill out the form and our team will contact you shortly.
+            </p>
+
+            <DemoRequestForm />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
       <Footer />
 
     </>
