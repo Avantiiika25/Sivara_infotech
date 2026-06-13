@@ -319,7 +319,7 @@ function PortfolioPage() {
         (project) =>
           project.category === activeCategory
       );
-      
+
 
   return (
     <>
@@ -334,35 +334,99 @@ function PortfolioPage() {
 
       <Header />
 
-      {/* HERO */}
+    
+{/* HERO */}
 
-      <section className="relative overflow-hidden pt-36 pb-24 bg-gradient-to-br from-black via-slate-950 to-cyan-950">
+<section
+  className="
+    relative
+    overflow-hidden
+    pt-36
+    pb-24
+    bg-cover
+    bg-center
+    bg-no-repeat
+  "
+  style={{
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop')",
+  }}
+>
 
-        <div className="absolute inset-0 bg-black/40" />
+  {/* Dark Overlay */}
 
-        <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-cyan-500/10 blur-[120px]" />
+  <div className="absolute inset-0 bg-black/70" />
 
-        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px]" />
+  {/* Gradient Overlay */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+  <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-slate-950/70 to-cyan-950/60" />
 
-          <span className="inline-flex items-center px-6 py-2 rounded-full border border-cyan-500/30 text-cyan-400 text-sm uppercase tracking-widest">
-            360° Virtual Tour Portfolio
-          </span>
+  {/* Glow Effects */}
 
-          <h1 className="mt-8 text-5xl md:text-7xl font-black text-white">
-            Explore Our Projects
-          </h1>
+  <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-cyan-500/10 blur-[120px]" />
 
-          <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-slate-300">
-            Discover immersive virtual tours created for Real Estate,
-            Plotting Projects, Government Initiatives, Education,
-            Healthcare, Retail Spaces and Exhibitions.
-          </p>
+  <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px]" />
 
-        </div>
+  {/* Content */}
 
-      </section>
+  <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+
+    <span
+      className="
+        inline-flex
+        items-center
+        px-6
+        py-2
+        rounded-full
+        border
+        border-cyan-400/30
+        bg-cyan-500/10
+        backdrop-blur-md
+        text-cyan-300
+        text-sm
+        uppercase
+        tracking-[3px]
+      "
+    >
+      360° Virtual Tour Portfolio
+    </span>
+
+    <h1
+      className="
+        mt-8
+        text-5xl
+        md:text-7xl
+        font-black
+        text-white
+        leading-tight
+      "
+    >
+      Explore Our
+      <span className="block text-cyan-400">
+        Virtual Experiences
+      </span>
+    </h1>
+
+    <p
+      className="
+        mt-8
+        max-w-3xl
+        mx-auto
+        text-lg
+        md:text-xl
+        text-slate-300
+        leading-relaxed
+      "
+    >
+      Discover immersive virtual tours created for
+      Real Estate, Plotting Projects, Educational
+      Institutes, Government Initiatives, Healthcare,
+      Retail Spaces and Premium Destinations.
+    </p>
+
+  </div>
+
+</section>
 
       {/* PORTFOLIO */}
 
@@ -420,10 +484,10 @@ function PortfolioPage() {
               >
 
                 <ProjectCard
-  {...project}
-  delay={index * 0.05}
-  onViewTour={() => openTour(project)}
-/>
+                  {...project}
+                  delay={index * 0.05}
+                  onViewTour={() => openTour(project)}
+                />
 
                 <div className="h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 overflow-hidden">
                   <p className="text-gray-300 text-sm leading-relaxed font-medium">
@@ -461,19 +525,19 @@ function PortfolioPage() {
 
       {/* TOUR MODAL */}
 
-{showTourModal && selectedTour && (
+      {showTourModal && selectedTour && (
 
-  <div
-    className="
+        <div
+          className="
       fixed inset-0 z-[9999]
       bg-black/70 backdrop-blur-md
       flex items-center justify-center
       p-3
     "
-  >
+        >
 
-    <div
-      className="
+          <div
+            className="
         relative
         w-full
         max-w-[1700px]
@@ -483,12 +547,12 @@ function PortfolioPage() {
         bg-white
         shadow-2xl
       "
-    >
+          >
 
-      {/* Small Floating Header */}
+            {/* Small Floating Header */}
 
-      <div
-        className="
+            <div
+              className="
           absolute
           top-4
           left-4
@@ -503,25 +567,25 @@ function PortfolioPage() {
           backdrop-blur-md
           shadow-lg
         "
-      >
+            >
 
-        <div>
-          <h2 className="text-sm font-semibold text-slate-900 leading-none">
-            {selectedTour.title}
-          </h2>
+              <div>
+                <h2 className="text-sm font-semibold text-slate-900 leading-none">
+                  {selectedTour.title}
+                </h2>
 
-          <p className="text-xs text-slate-500 mt-1">
-            {selectedTour.client}
-          </p>
-        </div>
+                <p className="text-xs text-slate-500 mt-1">
+                  {selectedTour.client}
+                </p>
+              </div>
 
-      </div>
+            </div>
 
-      {/* Close Button */}
+            {/* Close Button */}
 
-      <button
-        onClick={closeTour}
-        className="
+            <button
+              onClick={closeTour}
+              className="
           absolute
           top-4
           right-4
@@ -538,29 +602,29 @@ function PortfolioPage() {
           transition-all
           duration-300
         "
-      >
-        ✕
-      </button>
+            >
+              ✕
+            </button>
 
-      {/* Fullscreen Iframe */}
+            {/* Fullscreen Iframe */}
 
-      <iframe
-        src={selectedTour.tourUrl}
-        title={selectedTour.title}
-        className="w-full h-full"
-        allowFullScreen
-      />
+            <iframe
+              src={selectedTour.tourUrl}
+              title={selectedTour.title}
+              className="w-full h-full"
+              allowFullScreen
+            />
 
-    </div>
+          </div>
 
-  </div>
+        </div>
 
-)}
-          
+      )}
 
-          
 
-       
+
+
+
 
       <Footer />
     </>

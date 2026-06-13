@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { FormSubmissionHandler } from '@/utils/FormSubmissionHandler';
 import { ArrowRight, Loader2 } from 'lucide-react';
 
 function DemoRequestForm() {
@@ -29,45 +28,60 @@ function DemoRequestForm() {
 
     setIsSubmitting(true);
 
-    const requiredFields = [
-      'fullName',
-      'email',
-      'phone',
-    ];
+    try {
+      const response = await fetch(
+        'https://api.web3forms.com/submit',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key:
+              '2dd0ad94-2df3-47b5-b7d5-3944fa0fb676',
 
-    const validation =
-      FormSubmissionHandler.validate(
-        formData,
-        requiredFields
+            subject:
+              'New CRM Demo Request - Sivaraa Infotech',
+
+            from_name: 'CRM Demo Request Form',
+
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            requirements: formData.requirements,
+          }),
+        }
       );
 
-    if (!validation.isValid) {
-      Object.values(validation.errors).forEach((error) =>
-        toast.error(error)
+      const result = await response.json();
+
+      console.log(result);
+
+      if (result.success) {
+        toast.success(
+          'Demo request submitted successfully!'
+        );
+
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          company: '',
+          requirements: '',
+        });
+      } else {
+        toast.error(
+          result.message || 'Failed to send request'
+        );
+      }
+    } catch (error) {
+      console.error(error);
+
+      toast.error(
+        'Something went wrong. Please try again.'
       );
-
-      setIsSubmitting(false);
-      return;
-    }
-
-    const result =
-      await FormSubmissionHandler.submit(
-        formData,
-        'crm_demo'
-      );
-
-    if (result.success) {
-      toast.success(result.message);
-
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        company: '',
-        requirements: '',
-      });
-    } else {
-      toast.error(result.message);
     }
 
     setIsSubmitting(false);
@@ -96,8 +110,6 @@ function DemoRequestForm() {
       onSubmit={handleSubmit}
       className="space-y-5"
     >
-      {/* NAME + EMAIL */}
-
       <div className="grid md:grid-cols-2 gap-4">
 
         <input
@@ -122,8 +134,6 @@ function DemoRequestForm() {
 
       </div>
 
-      {/* PHONE + COMPANY */}
-
       <div className="grid md:grid-cols-2 gap-4">
 
         <input
@@ -147,8 +157,6 @@ function DemoRequestForm() {
 
       </div>
 
-      {/* REQUIREMENTS */}
-
       <textarea
         name="requirements"
         value={formData.requirements}
@@ -158,25 +166,22 @@ function DemoRequestForm() {
         placeholder="Tell us about your project requirements..."
       />
 
-      {/* BUTTON */}
-
       <Button
         type="submit"
         disabled={isSubmitting}
         className="
-w-full
-py-6
-text-lg
-font-semibold
-bg-cyan-500
-hover:bg-cyan-600
-text-white
-rounded-xl
-transition-all
-duration-300
-hover:scale-[1.02]
-shadow-[0_0_30px_rgba(34,211,238,0.35)]
-
+          w-full
+          py-6
+          text-lg
+          font-semibold
+          bg-cyan-500
+          hover:bg-cyan-600
+          text-white
+          rounded-xl
+          transition-all
+          duration-300
+          hover:scale-[1.02]
+          shadow-[0_0_30px_rgba(34,211,238,0.35)]
         "
       >
         {isSubmitting ? (
@@ -191,7 +196,6 @@ shadow-[0_0_30px_rgba(34,211,238,0.35)]
           </>
         )}
       </Button>
-
     </form>
   );
 }

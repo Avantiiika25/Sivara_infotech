@@ -8,7 +8,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import PageLoader from './components/PageLoader';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import CursorGlow from './components/CursorGlow';
-import StickyCTA from './components/StickyCTA';
+
 import PageTransition from './components/PageTransition';
 
 import HomePage from './pages/HomePage';
@@ -58,7 +58,7 @@ function App() {
       
       <Toaster position="top-right" theme="light" richColors />
       <AnimatedRoutes />
-      <StickyCTA />
+     
       <WhatsAppButton />
     </Router>
   );
