@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Linkedin,
   Instagram,
@@ -8,336 +8,189 @@ import {
   Phone,
   Mail,
   MapPin,
-  ArrowUpRight
-} from 'lucide-react';
+  ArrowRight,
+} from "lucide-react";
+
+// Asset Import for local background image
+import footerBg from "../assets/images/footer-bg.jpg";
+import logo from "../assets/images/logo.png";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { name: '360° Virtual Tours', path: '/services' },
-    { name: 'Plot Management CRM', path: '/crm-software' },
-    { name: 'Drone Shoots', path: '/services' },
-    { name: 'Interactive Maps', path: '/services' },
-    { name: 'Digital Layouts', path: '/services' },
-    { name: 'Event Virtual Coverage', path: '/services' }
+    "360° Virtual Tours",
+    "Drone Aerial Shoots",
+    "Plot Management CRM",
+    "Digital Layouts",
+    "Event Coverage",
   ];
 
   const socialLinks = [
-    {
-      icon: Facebook,
-      href: 'https://www.facebook.com/people/Sivaraa-Infotech/61569787983923/?mibextid=wwXIfr&rdid=o92q2yihXhCMyQLI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16p9L7VNi8%2F%3Fmibextid%3DwwXIfr',
-      label: 'Facebook'
-    },
-    {
-      icon: Instagram,
-      href: 'https://www.instagram.com/sivaraa_360_studio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D',
-      label: 'Instagram'
-    },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/company/sivaraa360studio',
-      label: 'LinkedIn'
-    },
-    {
-      icon: MessageCircle,
-      href: 'https://api.whatsapp.com/send/?phone=918888066946&text&type=phone_number&app_absent=0',
-      label: 'WhatsApp'
-    }
+    { icon: Facebook, href: "https://www.facebook.com/share/16p9L7VNi8/?mibextid=wwXIfr" },
+    { icon: MessageCircle, href: "https://wa.me/918888066946" },
+    { icon: Linkedin, href: "https://linkedin.com/company/sivaraa360studio" },
+    { icon: Instagram, href: "https://www.instagram.com/sivaraa_360_studio" },
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[#f7fcfd]">
+    <footer className="relative w-full overflow-hidden bg-slate-900 pt-24 md:pt-28">
+      
+      {/* CSS Keyframe Architecture Injection */}
+      <style>
+        {`
+          @keyframes ambient-pan {
+            0% { transform: scale(1) rotate(0deg) translate(0, 0); }
+            50% { transform: scale(1.05) rotate(0.25deg) translate(-0.5%, -0.5%); }
+            100% { transform: scale(1) rotate(0deg) translate(0, 0); }
+          }
+          @keyframes slide-right {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+          }
+          .animate-bg-ambient {
+            animation: ambient-pan 24s ease-in-out infinite;
+          }
+          .animate-arrow-nudge:hover .arrow-icon {
+            animation: slide-right 1s ease-in-out infinite;
+          }
+        `}
+      </style>
 
-      {/* Background Effects */}
-
-      <div className="absolute inset-0 overflow-hidden">
-
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-200/40 rounded-full blur-[150px]" />
-
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-[150px]" />
-
-        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-100/30 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24">
-
-        {/* Main Footer */}
-
+      {/* Living Animated Background Canvas - Elevated Z-Index and Clear Visibility */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none select-none">
         <div
-          className="
-            bg-white/80
-            backdrop-blur-xl
-            border
-            border-cyan-100
-            rounded-[40px]
-            shadow-[0_25px_80px_rgba(6,182,212,0.08)]
-            p-8
-            md:p-12
-          "
-        >
+          className="w-full h-full opacity-100 bg-cover bg-center transform scale-105 animate-bg-ambient"
+          style={{ backgroundImage: `url(${footerBg})` }}
+        />
+        {/* Soft dark atmospheric overlay to ensure readability of text elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-transparent to-slate-900/30" />
+      </div>
 
-          <div className="grid lg:grid-cols-12 gap-12">
-
-            {/* Company */}
-
-            <div className="lg:col-span-4">
-
-              <Link
-                to="/"
-                className="inline-block group"
-              >
-
-                <img
-                  src="/logo.png"
-                  alt="Sivaraa Infotech"
-                  className="
-                    h-16
-                    w-auto
-                    transition-all
-                    duration-500
-                    group-hover:scale-105
-                    group-hover:rotate-1
-                  "
-                />
-
-              </Link>
-
-              <p className="mt-6 text-slate-600 leading-relaxed">
-
-                Delivering immersive virtual experiences,
-                smart CRM solutions, drone technology,
-                interactive mapping and next-generation
-                digital transformation services.
-
+      <div className="w-full relative z-20 flex flex-col items-center">
+        
+        {/* Overlapping Primary Hero Card - Set to Custom Small-Scale Width Profile */}
+        <div className="w-full max-w-3xl mx-auto px-4 md:px-6 relative z-30 -mb-12">
+          <div className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-6 md:p-8 text-white shadow-2xl shadow-blue-950/50 transition-transform duration-500 hover:scale-[1.01] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="space-y-1.5 text-center sm:text-left flex-1">
+              <h3 className="text-base md:text-lg font-bold tracking-tight">
+                Subscribe to our virtual design workspace
+              </h3>
+              <p className="text-blue-100/90 text-[11px] leading-relaxed max-w-md">
+                Get direct optimization analytics on premium corporate plots, 360 frameworks, and customized architectural layout vectors.
               </p>
-
-              <div className="flex flex-wrap gap-3 mt-8">
-
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      group
-                      w-12
-                      h-12
-                      rounded-2xl
-                      bg-white
-                      border
-                      border-cyan-100
-                      flex
-                      items-center
-                      justify-center
-                      text-slate-600
-                      hover:bg-cyan-500
-                      hover:text-white
-                      hover:border-cyan-500
-                      hover:-translate-y-1
-                      shadow-sm
-                      hover:shadow-xl
-                      transition-all
-                      duration-300
-                    "
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
-
-              </div>
-
             </div>
-
-            {/* Services */}
-
-            <div className="lg:col-span-3">
-
-              <h3 className="text-xl font-bold text-slate-900 mb-8">
-                Our Solutions
-              </h3>
-
-              <div className="space-y-4">
-
-                {services.map((service) => (
-
-                  <Link
-                    key={service.name}
-                    to={service.path}
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      text-slate-600
-                      hover:text-cyan-600
-                      group
-                      transition-all
-                    "
-                  >
-
-                    <span>{service.name}</span>
-
-                    <ArrowUpRight
-                      className="
-                        w-4
-                        h-4
-                        opacity-0
-                        group-hover:opacity-100
-                        group-hover:translate-x-1
-                        transition-all
-                      "
-                    />
-
-                  </Link>
-
-                ))}
-
-              </div>
-
-            </div>
-
-            {/* Contact */}
-
-            <div className="lg:col-span-5">
-
-              <h3 className="text-xl font-bold text-slate-900 mb-8">
-                Contact Information
-              </h3>
-
-              <div className="space-y-4">
-
-                {/* Phone */}
-
-                <div className="p-5 rounded-3xl bg-gradient-to-r from-cyan-50 to-white border border-cyan-100 hover:border-cyan-300 transition-all">
-
-                  <div className="flex gap-4">
-
-                    <div className="w-12 h-12 rounded-2xl bg-cyan-500 flex items-center justify-center text-white">
-                      <Phone className="w-5 h-5" />
-                    </div>
-
-                    <div>
-
-                      <p className="text-sm text-slate-500 mb-1">
-                        Call Us
-                      </p>
-
-                      <a
-                        href="tel:+918421270360"
-                        className="font-semibold text-slate-900 hover:text-cyan-600"
-                      >
-                        +91 8421270360
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                {/* Email */}
-
-                <div className="p-5 rounded-3xl bg-gradient-to-r from-cyan-50 to-white border border-cyan-100 hover:border-cyan-300 transition-all">
-
-                  <div className="flex gap-4">
-
-                    <div className="w-12 h-12 rounded-2xl bg-cyan-500 flex items-center justify-center text-white">
-                      <Mail className="w-5 h-5" />
-                    </div>
-
-                    <div>
-
-                      <p className="text-sm text-slate-500 mb-1">
-                        Email Address
-                      </p>
-
-                      <a
-                        href="mailto:sivaraainfotech@gmail.com"
-                        className="font-semibold text-slate-900 break-all hover:text-cyan-600"
-                      >
-                        sivaraainfotech@gmail.com
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                {/* Location */}
-
-                <div className="p-5 rounded-3xl bg-gradient-to-r from-cyan-50 to-white border border-cyan-100 hover:border-cyan-300 transition-all">
-
-                  <div className="flex gap-4">
-
-                    <div className="w-12 h-12 rounded-2xl bg-cyan-500 flex items-center justify-center text-white">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-
-                    <div>
-
-                      <p className="text-sm text-slate-500 mb-1">
-                        Location
-                      </p>
-
-                      <p className="font-semibold text-slate-900">
-                        Nashik, Maharashtra, India
-                      </p>
-
-                      <p className="text-sm text-slate-500 mt-1">
-                        Mon - Sat | 9 AM - 6 PM
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
+            <a
+              href="https://wa.me/918888066946"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="animate-arrow-nudge whitespace-nowrap bg-white text-blue-700 hover:bg-slate-50 font-semibold text-xs py-2.5 px-5 rounded-xl shadow-md transition-all duration-300 flex items-center gap-2 shrink-0"
+            >
+              Initiate Consultation
+              <ArrowRight className="arrow-icon w-3.5 h-3.5 transition-transform" />
+            </a>
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
+        {/* Structural White Content Deck Container - Set to Full Wide Aspect Profile */}
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-20">
+          <div className="bg-white/90 backdrop-blur-md rounded-t-[2rem] pt-20 pb-8 px-6 md:px-12 border-x border-t border-slate-200/40 shadow-[0_-20px_40px_rgba(0,0,0,0.06)]">
+            
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 pb-8 border-b border-slate-100">
+              
+              {/* Column 1: Identity & Social Links */}
+              <div className="md:col-span-5 space-y-4">
+                <img 
+                  src={logo} 
+                  alt="Sivaraa Corporate Master Logo" 
+                  className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-105" 
+                />
+                <p className="text-slate-600 text-xs leading-relaxed max-w-sm">
+                  Transforming spatial limits into responsive, edge-rendered immersive systems. We build top-tier digital frameworks tailored around physical property profiles.
+                </p>
+                {/* Horizontal Minimalist Icon Row */}
+                <div className="flex gap-4 pt-1">
+                  {socialLinks.map((social, idx) => (
+                    <a
+                      key={idx}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-400 hover:text-blue-600 transition-colors duration-200"
+                    >
+                      <social.icon className="w-4 h-4 transition-transform duration-200 hover:scale-110" />
+                    </a>
+                  ))}
+                </div>
+              </div>
 
-        <div className="py-8">
+              {/* Column 2: Matrix Links */}
+              <div className="md:col-span-3">
+                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
+                  Services Matrix
+                </h4>
+                <ul className="space-y-2.5 text-xs text-slate-600">
+                  {services.map((service) => (
+                    <li key={service} className="group flex">
+                      <span className="cursor-pointer transition-colors duration-200 group-hover:text-blue-600 relative py-0.5">
+                        {service}
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-
-            <p className="text-slate-500 text-sm">
-              © {currentYear} Sivaraa Infotech. All Rights Reserved.
-            </p>
-
-            <div className="flex gap-8">
-
-              <Link
-                to="/privacy-policy"
-                className="text-slate-500 hover:text-cyan-600 text-sm transition-colors"
-              >
-                Privacy Policy
-              </Link>
-
-              <Link
-                to="/terms"
-                className="text-slate-500 hover:text-cyan-600 text-sm transition-colors"
-              >
-                Terms & Conditions
-              </Link>
+              {/* Column 3: Contact Channels */}
+              <div className="md:col-span-4">
+                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
+                  Contact Us
+                </h4>
+                <div className="space-y-3 text-xs text-slate-600">
+                  <div className="flex items-center gap-2.5 group">
+                    <Phone className="text-blue-500 w-3.5 h-3.5 shrink-0" />
+                    <a href="tel:+91918421270360" className="hover:text-blue-600 transition-colors">
+                      +91 918421270360
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2.5 group">
+                    <Mail className="text-blue-500 w-3.5 h-3.5 shrink-0" />
+                    <a href="mailto:sivaraainfotech@gmail.com" className="hover:text-blue-600 transition-colors break-all">
+                      sivaraainfotech@gmail.com
+                    </a>
+                  </div>
+                  <div className="flex items-start gap-2.5 pt-0.5">
+                    <MapPin className="text-blue-500 w-3.5 h-3.5 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed text-slate-500">
+                      6106 Roognta Shopping Hub, Nashik, MH, IN
+                    </span>
+                  </div>
+                </div>
+              </div>
 
             </div>
 
-          </div>
+            {/* Clean Segmented Legal Base */}
+            <div className="pt-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-slate-500 font-medium tracking-wide">
+              <p className="text-center sm:text-left">
+                © {currentYear} SIVARAA INFOTECH. All rights reserved.
+              </p>
+              <div className="flex items-center gap-4 text-slate-500">
+                <span className="hover:text-blue-600 cursor-pointer transition-colors"></span>
+                <span></span>
+                <p>
+                  Design by{" "}
+                  <span className="text-slate-700 hover:text-blue-600 transition-colors cursor-pointer font-semibold">
+                    Prime Digital Media
+                  </span>
+                </p>
+              </div>
+            </div>
 
+          </div>
         </div>
 
       </div>
-
     </footer>
   );
 }
