@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
-import { useEffect } from 'react'; // 1. Make sure useEffect is imported at the very top of your file
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -14,15 +13,59 @@ import { useTypingEffect } from '@/hooks/useTypingEffect';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCounterAnimation } from '@/hooks/useCounterAnimation';
 import { useMagneticHover } from '@/hooks/useMagneticHover';
+import hero1 from "@/assets/images/hero1.png";
+import ind42 from "@/assets/images/ind4.png";
 import { 
   Building2, Map, Home, Hotel, GraduationCap, Calendar, 
   Camera, Database, Focus, Video, Layers, Users, ArrowRight, ChevronDown 
 } from 'lucide-react';
 
+// Portfolio Image Asset Registries
+import w1 from "@/assets/images/w1.png";
+import w2 from "@/assets/images/w2.png";
+import w3 from "@/assets/images/w3.png";
+import w4 from "@/assets/images/w4.png";
+import w5 from "@/assets/images/w5.png";
+import w6 from "@/assets/images/w6.png";
+import w7 from "@/assets/images/w7.png";
+import w8 from "@/assets/images/w8.png";
+import w9 from "@/assets/images/w9.png";
+import w10 from "@/assets/images/w10.png";
+import w11 from "@/assets/images/w11.png";
+import w12 from "@/assets/images/w12.png";
+import w13 from "@/assets/images/w13.png";
+import w14 from "@/assets/images/w14.png";
+import w15 from "@/assets/images/w15.png";
+import w16 from "@/assets/images/w16.png";
+import w17 from "@/assets/images/w17.png";
+import w18 from "@/assets/images/w18.png";
+import w19 from "@/assets/images/w19.png";
+import w20 from "@/assets/images/w20.png";
+
+// Industry Theme Image Asset Registries
+import ind3 from "@/assets/images/ind3.png";
+import ind4 from "@/assets/images/ind4.png";
+import ind5 from "@/assets/images/ind5.png";
+import ind6 from "@/assets/images/ind6.png";
+
 function HomePage() {
   const { displayedText } = useTypingEffect('Immersive Digital Experiences for Modern Real Estate', 50);
-  const [activeTab, setActiveTab] = useState('residential');
-  const [heroPhase, setHeroPhase] = useState(0); // For handling text switches over camera zoom
+  const [activeTab, setActiveTab] = useState('real-estate');
+  const [heroPhase, setHeroPhase] = useState(0);
+
+  // Modal Interactive States
+  const [showTourModal, setShowTourModal] = useState(false);
+  const [selectedTour, setSelectedTour] = useState(null);
+
+  const openTour = (project) => {
+    setSelectedTour(project);
+    setShowTourModal(true);
+  };
+
+  const closeTour = () => {
+    setShowTourModal(false);
+    setSelectedTour(null);
+  };
 
   // Master Scroll Reference for Hero Parallax
   const containerRef = useRef(null);
@@ -77,39 +120,50 @@ function HomePage() {
   ];
 
   const categories = [
-    { value: 'residential', label: 'Residential' },
-    { value: 'plotting', label: 'Plotting' },
-    { value: 'commercial', label: 'Commercial' },
-    { value: 'hospitality', label: 'Hospitality' },
+    { value: 'real-estate', label: 'Real Estate' },
+    { value: 'plotting', label: 'Plotting Projects' },
+    { value: 'interior', label: 'Interior Design' },
+    { value: 'expo', label: 'Exhibitions & Expo' },
     { value: 'government', label: 'Government' }
   ];
 
+  // Master Portfolio Pool
   const projects = [
-    { image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', title: 'The Sapphire Residences', category: 'residential', client: 'Apex Developers', description: 'A complete 360° walkthrough of a luxury penthouse.' },
-    { image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80', title: 'Verde Valley Estates', category: 'plotting', client: 'Green Earth', description: 'Drone mapping and interactive CRM integration for 200+ plots.' },
-    { image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80', title: 'Nexus Tech Park', category: 'commercial', client: 'Nexus Corp', description: 'Commercial office space virtual presentation.' }
+    { id: 1, title: "Samraat Apna Ghar", category: "real-estate", client: "Samraat Group", description: "Interactive residential property virtual tour.", image: w1, tourUrl: "https://app.cloudpano.com/tours/RlO6rgfJS/" },
+    { id: 2, title: "Riddhi Exotica", category: "real-estate", client: "Riddhi Group", description: "Luxury residential project walkthrough.", image: w2, tourUrl: "https://app.cloudpano.com/tours/DA7EYiOJE/" },
+    { id: 3, title: "ABH Industrial Plots Phase 2", category: "plotting", client: "ABH Group", description: "Industrial plotting virtual tour.", image: w3, tourUrl: "https://app.cloudpano.com/tours/-hGPxaR2U/" },
+    { id: 4, title: "URBAN SYTES GROUP PLOTS", category: "plotting", client: "Urban Sytes", description: "Premium NA plotting project.", image: w4, tourUrl: "https://app.cloudpano.com/tours/fr6K6w0y1/" },
+    { id: 13, title: "Growth Euphoria Riverside", category: "plotting", client: "Growth Euphoria", description: "Premium riverside plotting.", image: w5, tourUrl: "https://app.cloudpano.com/tours/YK7DG8-XF/" },
+    { id: 15, title: "Trinity Plots", category: "plotting", client: "Trinity", description: "Premium plotting project.", image: w7, tourUrl: "https://app.cloudpano.com/tours/RLpY4XWm1/" },
+    { id: 16, title: "Nature Village", category: "plotting", client: "Nature Village", description: "Nature inspired plotting development.", image: w20, tourUrl: "https://app.cloudpano.com/tours/EqmVLBIkIWvD/" },
+    { id: 17, title: "Aura Interior", category: "interior", client: "Aura Interior", description: "Luxury interior virtual walkthrough.", image: w8, tourUrl: "https://app.cloudpano.com/tours/1ZSdkI9lP/" },
+    { id: 18, title: "CREDAI 2025", category: "expo", client: "CREDAI", description: "Property exhibition virtual tour.", image: ind6, tourUrl: "https://app.cloudpano.com/tours/9h3FCyAmi/" },
+    { id: 19, title: "MAHA TECH", category: "expo", client: "MAHA TECH", description: "Technology expo showcase.", image: w9, tourUrl: "https://app.cloudpano.com/tours/8-H3Ahf06/" },
+    { id: 20, title: "IIID Exhibition", category: "expo", client: "IIID", description: "Interior design exhibition.", image: w10, tourUrl: "https://app.cloudpano.com/tours/Het-5DGip/" },
+    { id: 24, title: "CREDAI Shelter Expo 2024", category: "expo", client: "CREDAI Nashik", description: "Property expo walkthrough.", image: ind6, tourUrl: "https://app.cloudpano.com/tours/9h3FCyAmi/" },
+    { id: 28, title: "Nashik Ganga Ghat", category: "government", client: "Government Project", description: "Tourism and heritage showcase.", image: ind4, tourUrl: "https://app.cloudpano.com/tours/XSmWGW3e6/" },
+    { id: 29, title: "Trimbakeshwar", category: "government", client: "Government Project", description: "Religious tourism virtual tour.", image: w17, tourUrl: "https://app.cloudpano.com/tours/eeGGt6LeW/" },
+    { id: 30, title: "Ranji Match Golf Club", category: "government", client: "Sports Authority", description: "Sports event virtual coverage.", image: w18, tourUrl: "https://app.cloudpano.com/tours/dEETujGAt/" }
   ];
 
-  
+  // Micro-component for counter wrapper
+  const Counter = ({ end, suffix }) => {
+    const { count, startAnimation } = useCounterAnimation(end, 2000);
+    const [ref, isVisible] = useScrollReveal({ threshold: 0.3, once: true });
 
-// Micro-component for counter wrapper
-const Counter = ({ end, suffix }) => {
-  const { count, startAnimation } = useCounterAnimation(end, 2000);
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.3, once: true });
+    useEffect(() => {
+      if (isVisible && count === 0) {
+        startAnimation();
+      }
+    }, [isVisible, count, startAnimation]);
 
-  // 2. Wrap the animation trigger inside useEffect
-  useEffect(() => {
-    if (isVisible && count === 0) {
-      startAnimation();
-    }
-  }, [isVisible, count, startAnimation]); // Only run when these values change
+    return (
+      <span ref={ref} className="text-5xl lg:text-7xl font-sans font-extrabold text-cyan-400 tabular-nums tracking-tighter block mb-2">
+        {count}{suffix}
+      </span>
+    );
+  };
 
-  return (
-    <span ref={ref} className="text-5xl lg:text-7xl font-sans font-extrabold text-cyan-400 tabular-nums tracking-tighter block mb-2">
-      {count}{suffix}
-    </span>
-  );
-};
   // Shared Framer variants for staggered sections
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -130,17 +184,19 @@ const Counter = ({ end, suffix }) => {
 
       <Header />
 
-      {/* --- HERO PARALLAX VIEWPORT CONTAINER --- */}
+      {/* ========================================================================= */}
+      {/* 1. HERO PARALLAX SECTION                                                  */}
+      {/* ========================================================================= */}
       <section ref={containerRef} className="relative h-[250vh] bg-black">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
           
-          {/* Phase 2: Aerial View Layer (Appears behind/inside the lens zoom sequence) */}
+          {/* Phase 2: Aerial View Layer */}
           <motion.div 
             style={{ scale: aerialScale, opacity: aerialOpacity }} 
             className="absolute inset-0 w-full h-full z-0"
           >
             <img 
-              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80" 
+              src="https://images.pexels.com/photos/19227282/pexels-photo-19227282.jpeg" 
               alt="Aerial Real Estate" 
               className="w-full h-full object-cover brightness-[0.45]" 
             />
@@ -148,20 +204,20 @@ const Counter = ({ end, suffix }) => {
           </motion.div>
 
           {/* Phase 1: Camera Lens Mask Layer */}
-          <motion.div 
-            style={{ scale: cameraScale, opacity: cameraOpacity, x: lensZoomX }} 
+          <motion.div
+            style={{ scale: cameraScale, opacity: cameraOpacity, x: lensZoomX }}
             className="absolute inset-0 w-full h-full z-10 flex items-center justify-center pointer-events-none"
           >
             <div className="absolute inset-0 bg-black/40 z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1920&q=80" 
-              alt="Premium Camera Lens Setup" 
+            <img
+              src={hero1}
+              alt="Premium Camera Lens Setup"
               className="w-full h-full object-cover transform transition-transform duration-300"
             />
           </motion.div>
-
+          
           {/* Core Interactive Messaging Layout overlay */}
-          <motion.div style={{ y: textY }} className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
+          <motion.div style={{ textY }} className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
             <div className="min-h-[140px] flex items-center justify-center mb-4">
               {heroPhase === 0 && (
                 <motion.h1 
@@ -215,55 +271,85 @@ const Counter = ({ end, suffix }) => {
           </div>
         </div>
       </section>
+      {/* --- END HERO PARALLAX SECTION --- */}
 
-      {/* --- INTRO SECTION (LIGHT THEME) --- */}
+
+      {/* ========================================================================= */}
+      {/* 2. INTRO SECTION (LIGHT CAROUSEL & CONTENT UI)                            */}
+      {/* ========================================================================= */}
       <section className="py-28 bg-white text-gray-900 relative z-20 overflow-hidden shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
-            {/* Parallax Shift Controlled Graphic Container */}
-            <motion.div style={{ y: yIntroImg }} className="relative order-2 lg:order-1">
-              <div className="absolute -inset-4 bg-cyan-100/70 blur-3xl rounded-full" />
-              <div className="relative overflow-hidden rounded-2xl group border border-gray-100 shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1649402265028-897cef6fb977?auto=format&fit=crop&w=1200&q=80" 
-                  alt="Immersive Technology Showcase" 
-                  className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent mix-blend-multiply" />
+            {/* Left Column: Content Presentation Layout */}
+            <motion.div style={{ y: yIntroText }} className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-100">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                <span className="text-cyan-700 font-bold tracking-wider text-xs uppercase">Next-Gen PropTech Ecosystem</span>
+              </div>
+              
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-gray-900 leading-tight">
+                Engineering Immersive Reality <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+                  For Modern Real Estate
+                </span>
+              </h2>
+              
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl font-normal">
+                At Sivaraa Infotech, we blend flawless architectural precision with cinematic spatial artistry and intelligent software engineering. We don't just display layouts—we construct full-scale interactive digital twins that empower decision-making.
+              </p>
+              
+              {/* Feature Grid Framework */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 mb-8">
+                {[
+                  { title: 'Interactive 360° Tours', desc: 'Photorealistic VR-ready walkthroughs with smart live hotspots.', icon: Camera },
+                  { title: 'Smart Plot Architecture', desc: 'Geographic layout maps syncing real-time availability workflows.', icon: Focus },
+                  { title: 'Proprietary CRM Engines', desc: 'Centralized lead ecosystems built to monitor sales speed.', icon: Database },
+                  { title: 'Cinematic Drone Matrix', desc: 'High-fidelity FPV aerial contexts and property boundary maps.', icon: Video }
+                ].map((item, i) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={i} className="flex gap-4 p-4 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-cyan-50/30 transition-all duration-300">
+                      <div className="w-10 h-10 rounded-lg bg-cyan-100/80 flex items-center justify-center text-cyan-600 flex-shrink-0">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                        <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="pt-2">
+                <Button asChild className="bg-[#0B0F19] hover:bg-[#1A2338] text-white rounded-full px-8 py-6 font-semibold shadow-xl hover:shadow-cyan-900/10 transition-all transform active:scale-95">
+                  <Link to="/services">Explore Structural Solutions</Link>
+                </Button>
               </div>
             </motion.div>
 
-            <motion.div style={{ y: yIntroText }} className="order-1 lg:order-2">
-              <span className="text-cyan-600 font-extrabold tracking-widest text-xs uppercase mb-3 block">Next-Gen Architecture</span>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-6 leading-tight">
-                The Future of Property Presentation Starts Here
-              </h2>
-              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed font-normal">
-                We blend architectural precision with cinematic artistry and robust software engineering. Sivaraa Infotech delivers end-to-end digital twins and CRM ecosystems that turn passive viewers into active buyers.
-              </p>
+            {/* Right Column: Automated Smooth Image Slider */}
+            <motion.div style={{ y: yIntroImg }} className="lg:col-span-5 relative w-full h-[450px] sm:h-[520px]">
+              {/* Ambient Depth Orbs */}
+              <div className="absolute -inset-6 bg-cyan-200/40 blur-3xl rounded-full z-0" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[105%] border-2 border-dashed border-gray-200/60 rounded-3xl pointer-events-none z-0 animate-[spin_120s_linear_infinite]" />
               
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                {['Interactive 360° Virtual Tours', 'Smart Plot Visualization', 'Real-Time CRM Intelligence', 'Drone Cinematic Mapping'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-800 font-medium text-sm">
-                    <div className="w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 flex-shrink-0">
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <Button asChild className="bg-[#0B0F19] hover:bg-[#1A2338] text-white rounded-full px-8 py-6 font-semibold shadow-md transition-all">
-                <Link to="/services">Explore Services</Link>
-              </Button>
+              {/* Master Carousel Box Component Frame */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-gray-200/80 shadow-2xl bg-gray-900 z-10 group">
+                <IntroCarouselImages />
+              </div>
             </motion.div>
 
           </div>
         </div>
       </section>
+      {/* --- END INTRO SECTION --- */}
 
-      {/* --- INDUSTRIES EMPOWERED (DARK UI) --- */}
+
+      {/* ========================================================================= */}
+      {/* 3. INDUSTRIES EMPOWERED SECTION (DARK UI)                                 */}
+      {/* ========================================================================= */}
       <section className="py-28 bg-[#0B0F19] text-white relative z-20 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -284,8 +370,12 @@ const Counter = ({ end, suffix }) => {
           </div>
         </div>
       </section>
+      {/* --- END INDUSTRIES EMPOWERED SECTION --- */}
 
-      {/* --- SERVICES MATRIX (LIGHT UI WITH CYAN ACCENTS) --- */}
+
+      {/* ========================================================================= */}
+      {/* 4. SERVICES MATRIX SECTION (LIGHT UI)                                     */}
+      {/* ========================================================================= */}
       <section className="py-28 bg-gray-50 text-gray-900 relative z-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
@@ -307,8 +397,12 @@ const Counter = ({ end, suffix }) => {
           </motion.div>
         </div>
       </section>
+      {/* --- END SERVICES MATRIX SECTION --- */}
 
-      {/* --- STATS COUNTER COUNTERWEIGHT (DARK CYAN BANNER) --- */}
+
+      {/* ========================================================================= */}
+      {/* 5. STATS COUNTER SECTION                                                 */}
+      {/* ========================================================================= */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-r from-cyan-950 via-[#0B0F19] to-cyan-950 text-white border-y border-cyan-500/10 z-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.08)_0,transparent_65%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -320,9 +414,13 @@ const Counter = ({ end, suffix }) => {
           </div>
         </div>
       </section>
+      {/* --- END STATS COUNTER SECTION --- */}
 
-      {/* --- FEATURED MASTERPIECES (DARK UI) --- */}
-      <section className="py-28 bg-[#0B0F19] text-white relative z-20">
+
+      {/* ========================================================================= */}
+      {/* 6. FEATURED MASTERPIECES SECTION (DARK UI)                                */}
+      {/* ========================================================================= */}
+      <section className="py-28 bg-[#0B0F19] text-white relative z-20 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-cyan-400 font-extrabold tracking-widest text-xs uppercase mb-2 block">Curated Work</span>
@@ -333,25 +431,40 @@ const Counter = ({ end, suffix }) => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {projects.filter(p => activeTab === 'residential' ? true : p.category === activeTab).map((proj, i) => (
-              <motion.div 
-                key={i} layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
-                className="overflow-hidden rounded-xl border border-white/5 bg-gray-900/40 hover:border-cyan-500/30 transition-all duration-300"
-              >
-                <ProjectCard {...proj} delay={i * 0.05} />
-              </motion.div>
-            ))}
+            {projects
+              .filter(p => p.category === activeTab)
+              .map((proj, i) => (
+                <motion.div 
+                  key={proj.id} 
+                  layout 
+                  initial={{ opacity: 0, scale: 0.93 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  exit={{ opacity: 0 }} 
+                  transition={{ duration: 0.4 }}
+                  className="overflow-hidden rounded-3xl border border-cyan-500/5 bg-slate-900/40 p-1 hover:border-cyan-400/30 transition-all duration-500"
+                >
+                  <ProjectCard 
+                    {...proj} 
+                    delay={i * 0.05} 
+                    onViewTour={() => openTour(proj)} 
+                  />
+                </motion.div>
+              ))}
           </div>
           
           <div className="text-center mt-16">
             <Button asChild variant="outline" className="border-white/10 hover:border-cyan-400 text-white hover:bg-cyan-500 hover:text-black rounded-full px-8 py-6 font-semibold transition-all shadow-sm">
-              <Link to="/portfolio">Explore Full Gallery</Link>
+              <Link to="/portfolio">Explore More Projects</Link>
             </Button>
           </div>
         </div>
       </section>
+      {/* --- END FEATURED MASTERPIECES SECTION --- */}
 
-      {/* --- INTERACTIVE ACTION CALL (LIGHT ULTRA-CYAN ACCENT THEME) --- */}
+
+      {/* ========================================================================= */}
+      {/* 7. INTERACTIVE CALL TO ACTION (CTA) SECTION                              */}
+      {/* ========================================================================= */}
       <section className="relative py-36 overflow-hidden bg-cyan-900 text-white z-20">
         <motion.div style={{ y: yCTA }} className="absolute inset-0 z-0">
           <img 
@@ -369,7 +482,7 @@ const Counter = ({ end, suffix }) => {
             Ready to Transform <br/>Property Marketing?
           </h2>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Button asChild size="lg" className="bg-white text-cyan-950 hover:bg-cyan-400 hover:text-black rounded-full px-10 py-7 text-base font-bold shadow-xl transform hover:scale-105 active:scale-[0.98] transition-all">
+            <Button asChild size="lg" className="bg-white text-cyan-950 hover:bg-cyan-400 hover:text-black rounded-full px-10 py-7 text-base font-bold shadow-xl transform scale-105 active:scale-[0.98] transition-all">
               <Link to="/contact">Book Strategy Call</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10 rounded-full px-10 py-7 text-base font-semibold transition-all">
@@ -378,16 +491,110 @@ const Counter = ({ end, suffix }) => {
           </div>
         </div>
       </section>
+      {/* --- END INTERACTIVE CALL TO ACTION (CTA) SECTION --- */}
+
+
+      {/* ========================================================================= */}
+      {/* 8. INTERACTIVE PORTFOLIO VIRTUAL TOUR DIALOG MODAL                        */}
+      {/* ========================================================================= */}
+      {showTourModal && selectedTour && (
+        <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-3">
+          <div className="relative w-full max-w-[1700px] h-[95vh] rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl">
+            
+            {/* Information Header Block */}
+            <div className="absolute top-4 left-4 z-40 flex items-center gap-3 px-5 py-2.5 rounded-full bg-slate-900/90 border border-slate-800 text-white backdrop-blur-md shadow-lg">
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <div>
+                <h2 className="text-sm font-bold text-slate-100 leading-none">
+                  {selectedTour.title}
+                </h2>
+                <p className="text-xs text-slate-400 mt-1">
+                  {selectedTour.client}
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Exit Action Control */}
+            <button
+              onClick={closeTour}
+              className="absolute top-4 right-4 z-50 w-11 h-11 rounded-full bg-slate-900 border border-slate-800 text-slate-200 shadow-lg flex items-center justify-center hover:scale-110 hover:bg-red-500 hover:border-red-600 hover:text-white transition-all duration-300"
+            >
+              ✕
+            </button>
+
+            {/* Panoramic Frame Presentation Viewport */}
+            <iframe
+              src={selectedTour.tourUrl}
+              title={selectedTour.title}
+              className="w-full h-full bg-slate-950"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+      {/* --- END VIRTUAL TOUR DIALOG MODAL --- */}
 
       <Footer />
     </div>
   );
 }
 
+// ========================================================================= 
+// SUB-COMPONENT: REFACTORED SECURE CAROUSEL IMAGE LAYER                     
+// ========================================================================= 
+function IntroCarouselImages() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [
+    "https://images.unsplash.com/photo-1649402265028-897cef6fb977?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+  ];
+
+  useEffect(() => {
+    const sliderTimer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(sliderTimer);
+  }, [slides.length]);
+
+  return (
+    <>
+      {slides.map((src, index) => {
+        if (index !== currentSlide) return null;
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <img 
+              src={src} 
+              alt={`Property Presentation Slide ${index + 1}`} 
+              className="w-full h-full object-cover brightness-[0.9]" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent mix-blend-multiply" />
+          </motion.div>
+        );
+      })}
+
+      {/* Pagination Dot Markers Tracker Overlay */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-30 bg-black/20 backdrop-blur-md px-3 py-2 rounded-full border border-white/10">
+        {slides.map((_, dotIndex) => (
+          <button
+            key={dotIndex}
+            onClick={() => setCurrentSlide(dotIndex)}
+            className={`h-1.5 transition-all duration-300 rounded-full ${
+              dotIndex === currentSlide ? "w-6 bg-cyan-400" : "w-1.5 bg-white/50"
+            }`}
+            aria-label={`Navigate to slide ${dotIndex + 1}`}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
 export default HomePage;
-
-
-
-
-
-
