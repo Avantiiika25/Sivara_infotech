@@ -349,7 +349,7 @@ function PortfolioPage() {
   "
   style={{
     backgroundImage:
-      "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop')",
+      "url('https://images.pexels.com/photos/67699/pexels-photo-67699.jpeg')",
   }}
 >
 

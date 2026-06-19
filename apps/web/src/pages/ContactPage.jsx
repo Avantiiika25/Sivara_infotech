@@ -212,7 +212,7 @@ function ContactPage() {
         mb-8
       "
       >
-        🚀 Let's Build Something Amazing Together
+       Let's Build
       </div>
 
       {/* Heading */}
@@ -517,6 +517,7 @@ function ContactPage() {
 
             <h3 className="text-3xl font-black text-cyan-900 mb-3">
               Send Us A Message
+              
             </h3>
 
             <p className="text-slate-600">
