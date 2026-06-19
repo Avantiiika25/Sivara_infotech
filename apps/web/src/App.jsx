@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'sonner';
@@ -49,6 +48,43 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  // Dynamically load public/favicon.png and mask it to a circle inside the tab
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/favicon.png'; // Pulls directly from public folder root
+    img.crossOrigin = 'anonymous';
+    
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const size = Math.max(img.width, img.height);
+      
+      canvas.width = size;
+      canvas.height = size;
+      
+      if (ctx) {
+        // Draw circular mask boundary
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
+        
+        // Render centered icon asset within the rounded path
+        ctx.drawImage(img, (size - img.width) / 2, (size - img.height) / 2, img.width, img.height);
+        
+        // Inject canvas stream back to raw DOM header elements
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        link.type = 'image/png';
+        link.href = canvas.toDataURL('image/png');
+      }
+    };
+  }, []);
+
   return (
     <Router>
       <PageLoader />
