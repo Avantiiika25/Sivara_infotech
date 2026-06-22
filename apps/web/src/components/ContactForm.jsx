@@ -5,7 +5,6 @@ import { Send, Loader2 } from 'lucide-react';
 
 function ContactForm() {
   const formRef = useRef(null);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -21,7 +20,6 @@ function ContactForm() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
@@ -30,83 +28,51 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
     try {
       const formPayload = new FormData();
 
-      formPayload.append(
-        "access_key",
-        "2dd0ad94-2df3-47b5-b7d5-3944fa0fb676"
-      );
+      // Web3Forms Core Settings
+      formPayload.append("access_key", "09f8225d-71b6-4051-a309-a159b31de4f7");
+      formPayload.append("subject", `New Lead from ${formData.fullName} - Sivaraa Infotech`);
+      formPayload.append("from_name", "Sivaraa Infotech Website");
 
-      formPayload.append(
-        "subject",
-        "New Contact Form Lead - Sivaraa Infotech"
-      );
+      // Map technical drop-down values to clean display names for the email report
+      const serviceMapping = {
+        '360-tours': '360° Virtual Tours',
+        'crm': 'Plot Management CRM',
+        'drone': 'Drone Cinematics',
+        'maps': 'Interactive Smart Maps'
+      };
 
-      formPayload.append(
-        "from_name",
-        "Sivaraa Infotech Website"
-      );
+      const budgetMapping = {
+        'under-50k': 'Under ₹50,000',
+        '50k-2lakh': '₹50,000 - ₹2,00,000',
+        'over-2lakh': 'Over ₹2,00,000'
+      };
 
-      formPayload.append(
-        "Full Name",
-        formData.fullName
-      );
+      // Payload Appends
+      formPayload.append("Full Name", formData.fullName);
+      formPayload.append("Email", formData.email);
+      formPayload.append("Phone", formData.phone);
+      formPayload.append("Company", formData.company || "Not Provided");
+      formPayload.append("Service", serviceMapping[formData.service] || "Not Specified");
+      formPayload.append("Budget", budgetMapping[formData.budgetRange] || "Not Specified");
+      formPayload.append("Project Details", formData.projectDetails);
+      formPayload.append("Newsletter Subscription", formData.subscribe ? "Yes" : "No");
 
-      formPayload.append(
-        "Email",
-        formData.email
-      );
-
-      formPayload.append(
-        "Phone",
-        formData.phone
-      );
-
-      formPayload.append(
-        "Company",
-        formData.company
-      );
-
-      formPayload.append(
-        "Service",
-        formData.service
-      );
-
-      formPayload.append(
-        "Budget",
-        formData.budgetRange
-      );
-
-      formPayload.append(
-        "Project Details",
-        formData.projectDetails
-      );
-
-      formPayload.append(
-        "Newsletter Subscription",
-        formData.subscribe ? "Yes" : "No"
-      );
-
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          body: formPayload
-        }
-      );
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formPayload
+      });
 
       const result = await response.json();
 
       if (result.success) {
-
-        toast.success(
-          "Thank you! Your message has been sent successfully."
-        );
-
+        toast.success("Thank you! Your message has been sent successfully.");
+        
+        // Reset state values back cleanly
         setFormData({
           fullName: '',
           email: '',
@@ -117,27 +83,14 @@ function ContactForm() {
           projectDetails: '',
           subscribe: false
         });
-
       } else {
-
-        toast.error(
-          result.message || "Something went wrong."
-        );
-
+        toast.error(result.message || "Something went wrong.");
       }
-
     } catch (error) {
-
-      toast.error(
-        "Failed to send message. Please try again."
-      );
-
+      toast.error("Failed to send message. Please try again.");
       console.error(error);
-
     } finally {
-
       setIsSubmitting(false);
-
     }
   };
 
@@ -160,19 +113,12 @@ function ContactForm() {
   `;
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      className="space-y-6"
-    >
-
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Full Name *
           </label>
-
           <input
             type="text"
             name="fullName"
@@ -188,7 +134,6 @@ function ContactForm() {
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Email Address *
           </label>
-
           <input
             type="email"
             name="email"
@@ -199,16 +144,13 @@ function ContactForm() {
             required
           />
         </div>
-
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Phone Number *
           </label>
-
           <input
             type="tel"
             name="phone"
@@ -224,7 +166,6 @@ function ContactForm() {
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Company
           </label>
-
           <input
             type="text"
             name="company"
@@ -234,41 +175,24 @@ function ContactForm() {
             placeholder="Your Company Ltd."
           />
         </div>
-
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Service Interested In
           </label>
-
           <select
             name="service"
             value={formData.service}
             onChange={handleChange}
             className={inputClasses}
           >
-            <option value="">
-              Select a service...
-            </option>
-
-            <option value="360-tours">
-              360° Virtual Tours
-            </option>
-
-            <option value="crm">
-              Plot Management CRM
-            </option>
-
-            <option value="drone">
-              Drone Cinematics
-            </option>
-
-            <option value="maps">
-              Interactive Smart Maps
-            </option>
+            <option value="">Select a service...</option>
+            <option value="360-tours">360° Virtual Tours</option>
+            <option value="crm">Plot Management CRM</option>
+            <option value="drone">Drone Cinematics</option>
+            <option value="maps">Interactive Smart Maps</option>
           </select>
         </div>
 
@@ -276,39 +200,24 @@ function ContactForm() {
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             Budget Range
           </label>
-
           <select
             name="budgetRange"
             value={formData.budgetRange}
             onChange={handleChange}
             className={inputClasses}
           >
-            <option value="">
-              Select budget...
-            </option>
-
-            <option value="under-50k">
-              Under ₹50,000
-            </option>
-
-            <option value="50k-2lakh">
-              ₹50,000 - ₹2,00,000
-            </option>
-
-            <option value="over-2lakh">
-              Over ₹2,00,000
-            </option>
+            <option value="">Select budget...</option>
+            <option value="under-50k">Under ₹50,000</option>
+            <option value="50k-2lakh">₹50,000 - ₹2,00,000</option>
+            <option value="over-2lakh">Over ₹2,00,000</option>
           </select>
         </div>
-
       </div>
 
       <div>
-
         <label className="block text-sm font-semibold text-slate-700 mb-2">
           Project Details *
         </label>
-
         <textarea
           name="projectDetails"
           value={formData.projectDetails}
@@ -318,27 +227,20 @@ function ContactForm() {
           placeholder="Tell us about your project requirements..."
           required
         />
-
       </div>
 
       <div className="flex items-center gap-3">
-
         <input
           type="checkbox"
           id="subscribe"
           name="subscribe"
           checked={formData.subscribe}
           onChange={handleChange}
-          className="w-5 h-5"
+          className="w-5 h-5 accent-cyan-500 rounded cursor-pointer"
         />
-
-        <label
-          htmlFor="subscribe"
-          className="text-sm text-slate-600 cursor-pointer"
-        >
+        <label htmlFor="subscribe" className="text-sm text-slate-600 cursor-pointer select-none">
           Subscribe to updates and newsletters
         </label>
-
       </div>
 
       <Button
@@ -371,7 +273,6 @@ function ContactForm() {
           </>
         )}
       </Button>
-
     </form>
   );
 }
