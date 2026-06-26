@@ -1256,7 +1256,7 @@ function CRMSoftwarePage() {
                 </p>
 
                 <p className="text-white font-semibold break-all">
-                  contact.primedigitalmedia@gmail.com
+                  sivaraainfotech@gmail.com
                 </p>
               </div>
 
